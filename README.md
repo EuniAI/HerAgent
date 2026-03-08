@@ -1,4 +1,4 @@
-# Prometheus Bug Reproduction Agent
+# HerAgent: Rethinking the Automated Environment Deployment via Hierarchical Test Pyramid
 
 An LLM-driven agent that automatically reproduces software bugs by building a code knowledge graph, generating environment setup scripts, and executing test suites inside isolated Docker containers.
 
