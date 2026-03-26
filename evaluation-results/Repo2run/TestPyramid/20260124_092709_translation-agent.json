@@ -1,0 +1,19 @@
+{
+  "installability": [
+    "pip install poetry",
+    "poetry install",
+    "poetry install --with app",
+    "poetry build"
+  ],
+  "runnability": [
+    "poetry run python app/app.py",
+    "python app/app.py",
+    "poetry run pytest -m integration"
+  ],
+  "testability": [
+    "poetry --version",
+    "poetry run python -c \"import translation_agent as ta; print('OK')\"",
+    "poetry run python examples/example_script.py",
+    "poetry run pytest"
+  ]
+}

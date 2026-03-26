@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "pip install moffee"
+  ],
+  "runnability": [
+    "moffee make example.md -o output_html/",
+    "moffee live example.md"
+  ],
+  "testability": [
+    "moffee --help",
+    "moffee --version"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "installability": [
+    "pip install -e \".[dev]\"",
+    "pip install .",
+    "sudo apt-get install -y nvidia-container-toolkit"
+  ],
+  "runnability": [
+    "make dev",
+    "steamvr",
+    "$HOME/.steam/debian-installation/steamapps/common/SteamVR/bin/vrmonitor.sh",
+    "python tools/demo_recorder/main.py",
+    "steam",
+    "pytest tests/integration"
+  ],
+  "testability": [
+    "python -c \"import bigym; print(getattr(bigym, '__version__', 'import_ok'))\"",
+    "python tools/demo_recorder/main.py --help",
+    "pip check",
+    "pytest"
+  ]
+}

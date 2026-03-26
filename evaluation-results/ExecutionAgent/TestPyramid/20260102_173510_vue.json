@@ -1,0 +1,16 @@
+{
+  "installability": [
+    "pnpm install",
+    "pnpm run build"
+  ],
+  "runnability": [
+    "pnpm run test:ssr",
+    "pnpm run test:e2e"
+  ],
+  "testability": [
+    "pnpm run test:transition",
+    "pnpm run test:sfc",
+    "pnpm run test:types",
+    "pnpm run test:unit"
+  ]
+}

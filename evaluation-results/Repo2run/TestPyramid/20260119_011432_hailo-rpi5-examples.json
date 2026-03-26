@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "python3 pose.py",
+    "python follow_detection.py",
+    "python example.py",
+    "rpicam-hello -t 0 --post-process-file /usr/share/rpi-camera-assets/hailo_yolov6_inference.json"
+  ],
+  "testability": [
+    "hailortcli fw-control identify",
+    "lspci | grep Hailo",
+    "gst-inspect-1.0 hailotools",
+    "gst-inspect-1.0 hailo"
+  ]
+}

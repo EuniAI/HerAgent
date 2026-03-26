@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "make nlohmann_json.docset",
+    "cmake -S . -B build -DJSON_BuildTests=ON",
+    "cmake --build build"
+  ],
+  "runnability": [
+    "./generate_natvis.py --version 3.10.2 output_directory/",
+    "python3 amalgamate.py -c config.json -s src",
+    "python3 amalgamate.py -c config.json -s src -p prologue.h",
+    "make install_venv serve -C docs/mkdocs",
+    "make serve_header"
+  ],
+  "testability": [
+    "./generate_natvis.py --help",
+    "python3 amalgamate.py -h",
+    "./test.sh",
+    "ctest --test-dir build --output-on-failure"
+  ]
+}

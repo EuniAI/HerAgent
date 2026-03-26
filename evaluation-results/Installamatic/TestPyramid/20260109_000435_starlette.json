@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "scripts/install",
+    "scripts/build"
+  ],
+  "runnability": [
+    "uvicorn example:app",
+    "uvicorn example:app --host 0.0.0.0 --port 8000",
+    "pytest -q -m integration"
+  ],
+  "testability": [
+    "scripts/check",
+    "scripts/lint",
+    "scripts/test",
+    "scripts/coverage"
+  ]
+}

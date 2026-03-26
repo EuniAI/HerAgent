@@ -1,0 +1,15 @@
+{
+  "installability": [
+    "pip install -e .",
+    "pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "torchrun --standalone --nproc_per_node=1 ml_mdm/clis/generate_sample.py --port 29500",
+    "torchrun --standalone --nproc_per_node=1 ml_mdm/clis/train_parallel.py --file-list=tests/test_files/sample_training_0.tsv --multinode=0 --output-dir=outputs --config_path configs/models/cc12m_64x64.yaml --num_diffusion_steps=10 --num-training-steps=10",
+    "pytest -m gpu"
+  ],
+  "testability": [
+    "python -c \"import ml_mdm; import torch; print('imports_ok')\"",
+    "pytest"
+  ]
+}

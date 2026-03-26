@@ -1,0 +1,51 @@
+{
+  "installability": [
+    "python -m pip install \"nonebot2[fastapi]\" nb-cli nonebot-plugin-docs",
+    "pipx install nb-cli",
+    "nb create mybot",
+    "nb plugin install nonebot-plugin-docs",
+    "nb plugin install nonebot-adapter-onebot",
+    "nb orm revision -m \"first revision\" --branch-label weather",
+    "nb orm upgrade",
+    "echo 'ALEMBIC_STARTUP_CHECK=false' >> .env.dev",
+    "export ALEMBIC_STARTUP_CHECK=false"
+  ],
+  "runnability": [
+    "nb run",
+    "nb run --reload",
+    "nb watch",
+    "python -m nonebot",
+    "ALEMBIC_STARTUP_CHECK=false nb run",
+    "python bot.py",
+    "pytest -m integration",
+    "pytest tests/integration"
+  ],
+  "testability": [
+    "python -m nonebot --version",
+    "python -m nonebot --help",
+    "python -c \"import nonebot; print(nonebot.__version__)\"",
+    "python -m nb_cli --help",
+    "nb --version",
+    "nb self check",
+    "nb plugin list",
+    "nb plugin search nonebot",
+    "nb plugin search onebot",
+    "nb orm --help",
+    "python -c \"from sqlalchemy.schema import CreateTable; from weather import Weather; print(CreateTable(Weather.__table__))\"",
+    "python -m pip show nonebot2",
+    "python -m pip show nonebot-plugin-docs",
+    "python -m pip show nb-cli",
+    "python -m pip --version",
+    "python --version",
+    "ruff check .",
+    "ruff --version",
+    "pyright",
+    "pyright --version",
+    "pre-commit run -a",
+    "black --version",
+    "curl http://127.0.0.1:8000/website/",
+    "curl http://127.0.0.1:8080/website/",
+    "pytest",
+    "pytest -q"
+  ]
+}

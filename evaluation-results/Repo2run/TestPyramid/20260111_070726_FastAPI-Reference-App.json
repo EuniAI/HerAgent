@@ -1,0 +1,16 @@
+{
+  "installability": [
+    "python -m venv .venv",
+    "source .venv/bin/activate",
+    ".venv\\Scripts\\activate",
+    "pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "uvicorn main:app --reload",
+    "alembic upgrade head",
+    "pytest tests/integration_tests/"
+  ],
+  "testability": [
+    "pytest tests/unit_tests/"
+  ]
+}

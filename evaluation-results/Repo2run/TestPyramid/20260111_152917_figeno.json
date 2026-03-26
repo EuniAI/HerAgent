@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "pip install .",
+    "conda install pysam -c bioconda",
+    "npm install --prefix figeno/gui",
+    "npm run build --prefix figeno/gui"
+  ],
+  "runnability": [
+    "figeno init",
+    "figeno gui",
+    "figeno make config.json",
+    "figeno.exe",
+    "figeno init -o config.json && figeno make config.json"
+  ],
+  "testability": [
+    "figeno --version",
+    "figeno -v",
+    "figeno --help"
+  ]
+}

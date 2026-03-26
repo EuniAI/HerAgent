@@ -1,0 +1,35 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip",
+    "pip install -r requirements.txt",
+    "pip install -r dsrag/dsparse/requirements.txt",
+    "pip install dsrag",
+    "pip install dsparse",
+    "pip install boto3 botocore",
+    "pip install google-cloud-aiplatform",
+    "brew install poppler",
+    "sudo apt-get install -y poppler-utils"
+  ],
+  "runnability": [
+    "python -m dsrag.dsparse.main",
+    "pytest dsrag/dsparse/tests/integration",
+    "pytest tests/integration",
+    "python -c \"from dsrag.create_kb import create_kb_from_file; kb=create_kb_from_file('levels_of_agi','dsRAG/tests/data/levels_of_agi.pdf')\"",
+    "python -c \"from dsrag.knowledge_base import KnowledgeBase; kb=KnowledgeBase('levels_of_agi'); print(len(kb.query(['What are the levels of AGI?','What is the highest level of AGI?'])))\"",
+    "python -c \"from dsrag.dsparse.main import parse_and_chunk; s,c=parse_and_chunk(kb_id='kb', doc_id='doc', file_path='dsRAG/tests/data/levels_of_agi.pdf', semantic_sectioning_config={'use_semantic_sectioning': False}); print(len(s), 'sections,', len(c), 'chunks')\""
+  ],
+  "testability": [
+    "python --version",
+    "pip --version",
+    "pip show dsrag",
+    "pip show dsparse",
+    "pdftoppm -v",
+    "pdfinfo -v",
+    "python -c \"import dsrag; print(getattr(dsrag, '__version__', 'installed'))\"",
+    "python -c \"import dsparse; print(dsparse.__version__)\"",
+    "python -c \"from dsrag.dsparse.main import parse_and_chunk; s,c=parse_and_chunk(kb_id='kb', doc_id='doc', text='Hello world'); print('sections:',len(s),'chunks:',len(c))\"",
+    "python -c \"from dsrag.dsparse.main import parse_and_chunk_no_vlm; s,c = parse_and_chunk_no_vlm(semantic_sectioning_config={}, chunking_config={}, kb_id='kb1', doc_id='doc1', text='Hello world.', testing_mode=True); print('OK')\"",
+    "pytest tests/unit",
+    "pytest dsrag/dsparse/tests/unit"
+  ]
+}

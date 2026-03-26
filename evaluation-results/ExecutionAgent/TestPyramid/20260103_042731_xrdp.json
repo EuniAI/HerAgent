@@ -1,0 +1,41 @@
+{
+  "installability": [
+    "git clone --recursive https://github.com/neutrinolabs/xrdp",
+    "tar -zxvf xrdp-0.1.tar.gz",
+    "cd xrdp",
+    "./bootstrap",
+    "echo \"CFLAGS=$CFLAGS_${{ matrix.arch }}\" >> $GITHUB_ENV",
+    "echo \"LDFLAGS=$LDFLAGS_${{ matrix.arch }}\" >> $GITHUB_ENV",
+    "echo \"PKG_CONFIG_PATH=$PKG_CONFIG_PATH_${{ matrix.arch }}\" >> $GITHUB_ENV",
+    "echo \"CONF_FLAGS=$CONF_FLAGS_${{ matrix.arch }}_${{ matrix.feature_set }} ${{ matrix.CONF_FLAGS_EXTRA }}\" >> $GITHUB_ENV",
+    "echo \"OS_VERSION=`lsb_release -sr`\" >> $GITHUB_ENV",
+    "./configure $CONF_FLAGS",
+    "make",
+    "sudo make install",
+    "yum install epel-release",
+    "sudo scripts/install_xrdp_build_dependencies_with_apt.sh ${{ matrix.feature_set }} ${{ matrix.arch }} --allow-downgrades --allow-remove-essential --allow-change-held-packages",
+    "sudo scripts/install_cppcheck_dependencies_with_apt.sh",
+    "scripts/install_cppcheck.sh $CPPCHECK_REPO $CPPCHECK_VER"
+  ],
+  "runnability": [
+    "xrdp",
+    "xrdp-sesman",
+    "xrdp-chansrv",
+    "xrdp-sessvc",
+    "xrdp-sesrun",
+    "xrdp-sesadmin",
+    "xrdp-genkeymap",
+    "xrdp-keygen",
+    "xrdp-dis",
+    "startwm.sh",
+    "make distcheck"
+  ],
+  "testability": [
+    "apt install xrdp",
+    "yum install xrdp",
+    "scripts/run_cppcheck.sh -v $CPPCHECK_VER",
+    "xrdp --version",
+    "systemctl status xrdp",
+    "make check"
+  ]
+}

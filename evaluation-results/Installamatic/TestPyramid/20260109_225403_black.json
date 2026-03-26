@@ -1,0 +1,23 @@
+{
+  "installability": [
+    "pip install black",
+    "pip install \"black[jupyter]\"",
+    "pip install git+https://github.com/psf/black",
+    "pip install -r requirements.txt",
+    "docker build -t black_gallery ."
+  ],
+  "runnability": [
+    "black .",
+    "python -m black .",
+    "python gallery.py -p black -o output",
+    "docker run --rm -v /host/output:/output -v /host/input:/input black_gallery:latest -p black"
+  ],
+  "testability": [
+    "black --version",
+    "black --help",
+    "python gallery.py -h",
+    "docker run --rm black_gallery:latest -h",
+    "pytest -q",
+    "python -m pytest"
+  ]
+}

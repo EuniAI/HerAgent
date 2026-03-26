@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "conda install -c conda-forge ydata-profiling",
+    "pip install ydata-profiling",
+    "mkdocs build",
+    "make install-docs"
+  ],
+  "runnability": [
+    "ydata_profiling",
+    "ydata_profiling --title \"Example Profiling Report\" --config_file default.yaml data.csv report.html",
+    "mkdocs serve",
+    "pandas_profiling"
+  ],
+  "testability": [
+    "ydata_profiling -h",
+    "ydata_profiling --version"
+  ]
+}

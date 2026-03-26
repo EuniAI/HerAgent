@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "npm install",
+    "npm ci",
+    "grunt build",
+    "npm run build"
+  ],
+  "runnability": [
+    "npm start"
+  ],
+  "testability": [
+    "npm run examples",
+    "node ./sandbox/client",
+    "grunt test",
+    "grunt watch:test",
+    "npm test"
+  ]
+}

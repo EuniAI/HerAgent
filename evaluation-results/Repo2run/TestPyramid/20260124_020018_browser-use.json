@@ -1,0 +1,14 @@
+{
+  "installability": [
+    "pip install .[dev]",
+    "hatch build",
+    "playwright install"
+  ],
+  "runnability": [
+    "pytest -m integration -q"
+  ],
+  "testability": [
+    "python -c \"import browser_use\"",
+    "pytest -q"
+  ]
+}

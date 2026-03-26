@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "conda create -n flash_diffusion python=3.10",
+    "conda activate flash_diffusion",
+    "pip install --upgrade pip",
+    "pip install -r requirements.txt",
+    "pip install -e ."
+  ],
+  "runnability": [
+    "python3.10 examples/train_flash_pixart.py",
+    "python3.10 examples/train_flash_canny_adapter.py",
+    "python3.10 examples/train_flash_sd.py",
+    "python3.10 examples/train_flash_sdxl.py"
+  ],
+  "testability": [
+    "python3.10 -c \"import flash; print(getattr(flash, '__version__', 'ok'))\"",
+    "python3.10 -c \"import importlib.util; assert importlib.util.find_spec('flash_diffusion') is not None; print('ok')\"",
+    "pytest"
+  ]
+}

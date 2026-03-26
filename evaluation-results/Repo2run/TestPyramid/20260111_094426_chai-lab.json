@@ -1,0 +1,19 @@
+{
+  "installability": [
+    "pip install chai_lab==0.5.1"
+  ],
+  "runnability": [
+    "chai fold input.fasta output_folder",
+    "chai fold --use-msa-server input.fasta output_folder",
+    "chai fold --use-msa-server --msa-server-url \"https://api.internalcolabserver.com\" input.fasta output_folder",
+    "python examples/predict_structure.py",
+    "CHAI_DOWNLOADS_DIR=/tmp/downloads python ./examples/predict_structure.py",
+    "python examples/msas/predict_with_msas.py"
+  ],
+  "testability": [
+    "chai citation",
+    "chai --help",
+    "chai fold --help",
+    "chai a3m-to-pqt --help"
+  ]
+}

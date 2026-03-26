@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "python3 -m pip install -r requirements.txt",
+    "python3 tools/make_mo.py"
+  ],
+  "runnability": [
+    "python3 -OO SABnzbd.py",
+    "python3 -OO SABnzbd.py -d",
+    "SABnzbd.exe",
+    "SABnzbd-console.exe",
+    "python3 SABnzbd.py -s localhost:7777",
+    "SABnzbd.exe -s localhost:7777"
+  ],
+  "testability": [
+    "pytest -q"
+  ]
+}

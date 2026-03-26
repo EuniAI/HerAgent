@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "pip install -e .",
+    "pip install .",
+    "pip install dataformer",
+    "pip install dataformer@git+https://github.com/DataformerAI/dataformer.git"
+  ],
+  "runnability": [
+    "python examples/chat.py",
+    "python examples/evol_instruct.py",
+    "python examples/evol_quality.py"
+  ],
+  "testability": [
+    "python -c \"import dataformer; print(dataformer.__version__)\"",
+    "pip show dataformer",
+    "python -c \"from dataformer.llms import AsyncLLM; print('OK')\""
+  ]
+}

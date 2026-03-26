@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "python3 -m venv myenv",
+    "source myenv/bin/activate",
+    "python -m pip install --upgrade edsl"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -c \"import edsl; print(edsl.__version__)\"",
+    "python -c \"from edsl import QuestionMultipleChoice; print('EDSL import OK')\"",
+    "pip show edsl"
+  ]
+}

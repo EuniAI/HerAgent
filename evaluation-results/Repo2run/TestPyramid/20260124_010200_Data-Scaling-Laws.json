@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "pip install -r requirements.txt",
+    "pip install -e ."
+  ],
+  "runnability": [
+    "bash run_slam.sh",
+    "bash run_generate_dataset.sh",
+    "bash run_slam.sh && bash run_generate_dataset.sh",
+    "python visualize_dataset.py",
+    "bash eval.sh",
+    "bash eval.sh -j"
+  ],
+  "testability": [
+    "bash -c \"if [ -f diffusion_policy/env/kitchen/relay_policy_learning/third_party/franka/franka_panda.xml ]; then echo 'franka_panda.xml found'; else echo 'franka_panda.xml missing'; exit 1; fi\""
+  ]
+}

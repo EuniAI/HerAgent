@@ -1,0 +1,30 @@
+{
+  "installability": [
+    "git clone https://github.com/Benexl/FastAnime.git --depth 1",
+    "uv tool install fastanime",
+    "uv tool install 'fastanime[standard]'",
+    "uv tool install 'https://github.com/Benexl/FastAnime.git[standard]'",
+    "uv tool install .",
+    "pip install fastanime",
+    "pip install 'fastanime==0.60.1.dev1'",
+    "pipx install fastanime",
+    "nix profile install github:Benexl/fastanime"
+  ],
+  "runnability": [
+    "fastanime",
+    "fastanime serve",
+    "fastanime search",
+    "fastanime download",
+    "fastanime downloads",
+    "fastanime grab",
+    "fastanime update",
+    "fastanime cache",
+    "fastanime config",
+    "fastanime anilist",
+    "fastanime completions"
+  ],
+  "testability": [
+    "fastanime --help",
+    "fastanime --version"
+  ]
+}

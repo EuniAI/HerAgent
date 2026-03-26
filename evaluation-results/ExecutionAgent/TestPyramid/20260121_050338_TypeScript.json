@@ -1,0 +1,22 @@
+{
+  "installability": [
+    "npm ci",
+    "npm install",
+    "npm run build",
+    "npx tsc"
+  ],
+  "runnability": [
+    "npx tsserver",
+    "npm run test:integration"
+  ],
+  "testability": [
+    "node --version",
+    "npm --version",
+    "npx tsc --version",
+    "npx tsc --help",
+    "npx tsserver --help",
+    "npm ls typescript",
+    "node -p \"require('typescript').version\"",
+    "npm test"
+  ]
+}

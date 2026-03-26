@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "poetry install",
+    "poetry build",
+    "poetry run python3 scripts/build.py",
+    "docker build -t spotdl ."
+  ],
+  "runnability": [
+    "spotdl download https://open.spotify.com/track/0rKtyWc8bvkriBthvHKY8d",
+    "spotdl save https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M --save-file playlist.spotdl",
+    "spotdl sync playlist.spotdl",
+    "spotdl url https://open.spotify.com/track/0rKtyWc8bvkriBthvHKY8d",
+    "spotdl web",
+    "python -m spotdl https://open.spotify.com/track/0rKtyWc8bvkriBthvHKY8d",
+    "spotdl --download-ffmpeg",
+    "docker run --rm -v $(pwd):/music spotdl download https://open.spotify.com/track/0rKtyWc8bvkriBthvHKY8d"
+  ],
+  "testability": [
+    "spotdl -h",
+    "spotdl --version",
+    "pytest",
+    "pytest --cov=spotdl",
+    "pytest --disable-vcr"
+  ]
+}

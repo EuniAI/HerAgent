@@ -1,0 +1,32 @@
+{
+  "installability": [
+    "pyenv install 3.10",
+    "pyenv local 3.10.15",
+    "poetry env use 3.10.15",
+    "poetry lock",
+    "poetry add git+https://github.com/awslabs/gluon-ts.git",
+    "poetry add git+https://github.com/amazon-science/chronos-forecasting.git",
+    "pip install timesfm[torch]",
+    "pip install timesfm[pax]",
+    "poetry install"
+  ],
+  "runnability": [
+    "bash finetune.sh",
+    "python3 finetune.py",
+    "python3 finetune.py --use-lora",
+    "python3 finetune.py --use-dora",
+    "python3 finetune.py --use-linear-probing",
+    "poetry run python3 -m experiments.long_horizon_benchmarks.run_eval --model_path=amazon/chronos-t5-mini --backend=\"gpu\" --pred_len=96 --context_len=512 --dataset=etth1",
+    "poetry run python3 -m experiments.long_horizon_benchmarks.run_eval --model_path=google/timesfm-1.0-200m --backend=\"gpu\" --pred_len=96 --context_len=512 --dataset=etth1",
+    "poetry run python3 -m experiments.extended_benchmarks.run_timesfm --model_path=google/timesfm-1.0-200m --backend=gpu",
+    "poetry run python3 -m experiments.extended_benchmarks.run_timesfm --model_path=google/timesfm-1.0-200m-pytorch --backend=gpu",
+    "poetry run python3 -m experiments.extended_benchmarks.run_timegpt"
+  ],
+  "testability": [
+    "python3 finetune.py --help",
+    "poetry run python3 -c \"import timesfm; print(timesfm.__version__)\"",
+    "poetry run python3 -c \"import torch; print(torch.__version__)\"",
+    "pip show timesfm",
+    "poetry run pytest -q"
+  ]
+}

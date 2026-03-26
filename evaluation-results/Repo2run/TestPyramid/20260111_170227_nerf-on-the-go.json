@@ -1,0 +1,21 @@
+{
+  "installability": [
+    "pip install --upgrade pip",
+    "conda install pip",
+    "pip install -r requirements.txt",
+    "pip install jax==0.4.26 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html",
+    "pip install jaxlib==0.4.26+cuda12.cudnn89 -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html"
+  ],
+  "runnability": [
+    "bash ./scripts/download_on-the-go.sh",
+    "bash ./scripts/feature_extract.sh",
+    "bash scripts/render-on-the-go.sh",
+    "bash scripts/eval-on-the-go.sh",
+    "bash scripts/train_on-the-go_HD.sh",
+    "bash scripts/train_on-the-go.sh"
+  ],
+  "testability": [
+    "python -c \"import jax, jaxlib; print(jax.__version__, jaxlib.__version__)\"",
+    "./scripts/run_all_unit_tests.sh"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "python -m pip install -U build setuptools wheel",
+    "python -m build",
+    "python setup.py sdist bdist_wheel",
+    "python -m pip install .",
+    "python -m pip install -e ."
+  ],
+  "runnability": [
+    "python -c \"import torch, tensorhue; t=torch.rand(20,20); tensorhue.viz(t)\"",
+    "python -c \"import numpy as np, tensorhue; tensorhue.viz(np.random.rand(20,20))\""
+  ],
+  "testability": [
+    "python -c \"import tensorhue; print(tensorhue.__version__)\"",
+    "python -m pip install tensorhue",
+    "python -m pip show tensorhue"
+  ]
+}

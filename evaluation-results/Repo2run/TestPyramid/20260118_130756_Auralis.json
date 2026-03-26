@@ -1,0 +1,43 @@
+{
+  "installability": [
+    "python -m build",
+    "python setup.py sdist bdist_wheel",
+    "python -m pip install .",
+    "python -m pip install -e .",
+    "python setup.py install"
+  ],
+  "runnability": [
+    "python -m auralis.entrypoints.oai_server",
+    "python -m auralis.entrypoints.oai_server --host 127.0.0.1 --port 8000",
+    "python -m auralis.entrypoints.oai_server --host 0.0.0.0 --port 8000",
+    "python -m auralis.entrypoints.oai_server --host 0.0.0.0 --port 8000 --model AstraMindAI/xttsv2 --gpt_model AstraMindAI/xtts2-gpt --max_concurrency 8 --vllm_logging_level warn",
+    "uvicorn auralis.entrypoints.oai_server:app --host 127.0.0.1 --port 8000",
+    "auralis.openai --host 127.0.0.1 --port 8000 --model AstraMindAI/xttsv2 --gpt_model AstraMindAI/xtts2-gpt --max_concurrency 8 --vllm_logging_level warn",
+    "PYTHONPATH=src python src/auralis/entrypoints/oai_server.py --host 127.0.0.1 --port 8000",
+    "pytest tests/integration/test_generate_audio_async.py",
+    "pytest --asyncio-mode=auto tests/integration/test_generate_audio_async.py",
+    "curl http://127.0.0.1:8000/v1/models",
+    "curl http://127.0.0.1:8000/docs",
+    "curl -i -X POST http://127.0.0.1:8000/v1/chat/completions -H \"Content-Type: application/json\" -d '{}'",
+    "curl -N -X POST http://127.0.0.1:8000/v1/chat/completions -H \"Content-Type: application/json\" -H \"Authorization: Bearer $OPENAI_API_KEY\" -d '{\"model\":\"gpt-4o-mini\",\"modalities\":[\"text\",\"audio\"],\"messages\":[{\"role\":\"user\",\"content\":\"Say hello\"}],\"vocalize_at_every_n_words\":10,\"openai_api_url\":\"https://api.openai.com/v1/chat/completions\"}'",
+    "curl -N -X POST http://127.0.0.1:8000/v1/chat/completions -H \"Content-Type: application/json\" -H \"Authorization: Bearer $OPENAI_API_KEY\" -d '{\"model\":\"gpt-4o-mini\",\"modalities\":[\"text\"],\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}],\"openai_api_url\":\"https://api.openai.com/v1/chat/completions\",\"vocalize_at_every_n_words\":50}'",
+    "curl -fS -o out.mp3 -X POST http://127.0.0.1:8000/v1/audio/speech -H \"Content-Type: application/json\" -d '{\"model\":\"AstraMindAI/xttsv2\",\"input\":\"Hello world\",\"voice\":\"alloy\",\"response_format\":\"mp3\",\"speed\":1.0}'",
+    "python examples/use_openai_server.py"
+  ],
+  "testability": [
+    "python -m auralis.entrypoints.oai_server --help",
+    "auralis.openai --help",
+    "auralis.openai --version",
+    "which auralis.openai",
+    "pip show auralis",
+    "python setup.py --version",
+    "python --version",
+    "uvicorn --version",
+    "python -c \"import auralis; print(getattr(auralis, '__version__', 'unknown'))\"",
+    "python -c \"import pkg_resources; print(pkg_resources.get_distribution('auralis').version)\"",
+    "python -c \"import torch, pytest; print(torch.__version__); print(pytest.__version__)\"",
+    "python -m pytest",
+    "pytest -q",
+    "pytest --maxfail=1 --disable-warnings -q"
+  ]
+}

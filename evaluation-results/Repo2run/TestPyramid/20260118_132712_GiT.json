@@ -1,0 +1,51 @@
+{
+  "installability": [
+    "conda create -n git python=3.10 -y",
+    "conda activate git",
+    "export NUM_GPUS=8",
+    "python -m pip install -r requirements.txt",
+    "python -m pip install -U openmim",
+    "mim install mmdet",
+    "python -m pip install git+https://github.com/openai/CLIP.git",
+    "python -m pip install tensorflow-gpu==2.6.0",
+    "git clone https://github.com/Haiyang-W/GiT.git",
+    "python -m pip install -e GiT",
+    "git clone -b dev-1.x https://github.com/open-mmlab/mmclassification.git",
+    "python -m pip install -e mmclassification",
+    "mkdir -p GiT/checkpoints",
+    "wget -O GiT/checkpoints/efficientdet_effb3_bifpn_8xb16-crop896-300e_coco_20230223_122457-e6f7a833.pth https://download.openmmlab.com/mmdetection/v3.0/efficientdet/efficientdet_effb3_bifpn_8xb16-crop896-300e_coco/efficientdet_effb3_bifpn_8xb16-crop896-300e_coco_20230223_122457-e6f7a833.pth",
+    "wget -P GiT/checkpoints https://download.openmmlab.com/mmdetection/v3.0/detic/detic_centernet2_swin-b_fpn_4x_lvis-coco-in21k/detic_centernet2_swin-b_fpn_4x_lvis-coco-in21k_20230120-0d301978.pth",
+    "wget -P GiT/checkpoints https://download.openmmlab.com/mmdetection/v3.0/sparseinst/sparseinst_r50_iam_8xb8-ms-270k_coco/sparseinst_r50_iam_8xb8-ms-270k_coco_20221111_181051-72c711cd.pth",
+    "wget -P GiT/checkpoints https://download.openmmlab.com/mmdetection/v3.0/convnextv2/mask-rcnn_convnext-v2-b_fpn_lsj-3x-fcmae_coco/mask-rcnn_convnext-v2-b_fpn_lsj-3x-fcmae_coco_20230113_110947-757ee2dd.pth",
+    "wget -P GiT/datasets/metadata https://raw.githubusercontent.com/facebookresearch/Detic/main/datasets/metadata/lvis_v1_clip_a%2Bcname.npy",
+    "python projects/DiffusionDet/model_converters/diffusiondet_resnet_to_mmdet.py ${DIFFUSIONDET_CKPT_PATH} ${MMDETECTION_CKPT_PATH}",
+    "python projects/EfficientDet/convert_tf_to_pt.py --backbone ${BACKBONE_NAME} --tensorflow_weight ${TENSORFLOW_WEIGHT_PATH} --out_weight ${OUT_PATH}"
+  ],
+  "runnability": [
+    "python tools/train.py projects/EfficientDet/configs/efficientdet_effb3_bifpn_8xb16-crop896-300e_coco.py",
+    "python tools/train.py projects/DiffusionDet/configs/diffusiondet_r50_fpn_500-proposals_1-step_crop-ms-480-800-450k_coco.py",
+    "python tools/train.py projects/ConvNeXt-V2/mask-rcnn_convnext-v2-b_fpn_lsj-3x-fcmae_coco.py",
+    "python -m torch.distributed.run --nproc_per_node=${NUM_GPUS} tools/train.py projects/example_project/configs/faster-rcnn_dummy-resnet_fpn_1x_coco.py",
+    "mim train mmdet projects/ConvNeXt-V2/mask-rcnn_convnext-v2-b_fpn_lsj-3x-fcmae_coco.py",
+    "python demo.py ${IMAGE_PATH} ${CONFIG_PATH} ${MODEL_PATH} --show --score-thr 0.5 --dataset lvis",
+    "python tools/test.py projects/EfficientDet/configs/efficientdet_effb3_bifpn_8xb16-crop896-300e_coco.py GiT/checkpoints/efficientdet_effb3_bifpn_8xb16-crop896-300e_coco_20230223_122457-e6f7a833.pth",
+    "python tools/test.py projects/EfficientDet/configs/tensorflow/efficientdet_effb0_bifpn_8xb16-crop512-300e_coco_tf.py ${CHECKPOINT_PATH}",
+    "python tools/test.py projects/DiffusionDet/configs/diffusiondet_r50_fpn_500-proposals_1-step_crop-ms-480-800-450k_coco.py ${CHECKPOINT_PATH} --cfg-options model.bbox_head.sampling_timesteps=${STEPS}",
+    "python tools/test.py projects/SparseInst/configs/sparseinst_r50_iam_8xb8-ms-270k_coco.py ${CHECKPOINT_PATH}",
+    "python tools/test.py projects/ConvNeXt-V2/mask-rcnn_convnext-v2-b_fpn_lsj-3x-fcmae_coco.py ${CHECKPOINT_PATH} --eval bbox segm",
+    "python tools/test.py projects/example_project/configs/faster-rcnn_dummy-resnet_fpn_1x_coco.py ${CHECKPOINT_PATH}",
+    "mim test mmdet projects/ConvNeXt-V2/mask-rcnn_convnext-v2-b_fpn_lsj-3x-fcmae_coco.py --checkpoint ${CHECKPOINT_PATH} --eval bbox segm"
+  ],
+  "testability": [
+    "python --version",
+    "pip --version",
+    "mim --version",
+    "python -c \"import torch, torchvision; print(torch.__version__, torchvision.__version__); print('CUDA:', torch.cuda.is_available())\"",
+    "python -c \"import mmdet; print(mmdet.__version__)\"",
+    "python -c \"import mmcls; print(mmcls.__version__)\"",
+    "python -c \"import mmengine, mmcv; print(mmengine.__version__, mmcv.__version__)\"",
+    "nvidia-smi",
+    "python demo.py --help",
+    "pytest -q"
+  ]
+}

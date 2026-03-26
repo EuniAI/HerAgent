@@ -1,0 +1,30 @@
+{
+  "installability": [
+    "python -m venv .venv",
+    ".venv\\Scripts\\activate",
+    "source .venv/bin/activate",
+    "pip install -r requirements.txt",
+    "pip install -r requirements-dev.txt",
+    "pip install -e .",
+    "pip install dbos",
+    "curl -sSL https://pdm-project.org/install-pdm.py | python3 -",
+    "pdm install"
+  ],
+  "runnability": [
+    "dbos start",
+    "fastapi run",
+    "uvicorn main:app --host 0.0.0.0 --port 8000",
+    "python3 start_postgres_docker.py",
+    "python3 dbos/_templates/hello/start_postgres_docker.py",
+    "dbos migrate",
+    "pytest -m integration",
+    "pdm run pytest -m integration"
+  ],
+  "testability": [
+    "pdm run mypy .",
+    "pytest -q -m smoke",
+    "pdm run pytest -q -m smoke",
+    "pytest",
+    "pdm run pytest"
+  ]
+}

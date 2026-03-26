@@ -1,0 +1,14 @@
+{
+  "installability": [
+    "python -m pip install -r requirements/py3.txt",
+    "python -m pip install -e ..",
+    "python -m pip install Sphinx",
+    "make html",
+    "make.bat html"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -m django check",
+    "./runtests.py"
+  ]
+}

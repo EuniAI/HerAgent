@@ -1,0 +1,15 @@
+{
+  "installability": [
+    "sudo apt install -y libosmesa6-dev libgl1-mesa-glx libglfw3 patchelf",
+    "conda env create -f conda_environment.yaml",
+    "conda activate consistency-policy"
+  ],
+  "runnability": [
+    "python train.py --config-dir=configs/ --config-name=edm_square.yaml logging.name=edm_square",
+    "jupyter nbconvert --to notebook --execute --inplace example.ipynb"
+  ],
+  "testability": [
+    "python -c \"import consistency_policy; print(getattr(consistency_policy, '__version__', 'import_ok'))\"",
+    "pytest -q"
+  ]
+}

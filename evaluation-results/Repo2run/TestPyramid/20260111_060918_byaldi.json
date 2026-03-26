@@ -1,0 +1,16 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip wheel setuptools",
+    "pip install --upgrade byaldi",
+    "pip install flash-attn",
+    "sudo apt-get update && sudo apt-get install -y poppler-utils",
+    "brew install poppler"
+  ],
+  "runnability": [],
+  "testability": [
+    "pdftoppm -v",
+    "python -c \"import byaldi; print('byaldi import ok')\"",
+    "python -c \"import flash_attn; print('flash_attn import ok')\"",
+    "pytest -q"
+  ]
+}

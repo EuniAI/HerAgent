@@ -1,0 +1,50 @@
+{
+  "installability": [
+    "python -m pip install -U fastagency",
+    "npx playwright install",
+    "docker build -t deploy_fastagency -f docker/Dockerfile ."
+  ],
+  "runnability": [
+    "fastagency serve",
+    "fastagency run",
+    "python -m fastagency",
+    "python main.py",
+    "uvicorn app:app --reload",
+    "uvicorn main:app --reload",
+    "uvicorn my_fastagency_app.deployment.main_1_fastapi:app --host 0.0.0.0 --port 8008 --reload",
+    "uvicorn my_fastagency_app.deployment.main_2_fastapi:app --host 0.0.0.0 --port 8008 --reload",
+    "uvicorn my_fastagency_app.deployment.main_1_nats:app --reload",
+    "gunicorn my_fastagency_app.deployment.main:app",
+    "gunicorn my_fastagency_app.deployment.main_2_mesop:app -b 0.0.0.0:8888 --reload",
+    "gunicorn my_fastagency_app.deployment.main_3_mesop:app -b 0.0.0.0:8888 --reload",
+    "gunicorn my_bank_app.deployment.main:app",
+    "docker run --rm -d --name deploy_fastagency -e OPENAI_API_KEY=$OPENAI_API_KEY -p 8008:8008 -p 8888:8888 deploy_fastagency",
+    "docker run --rm -d --name deploy_fastagency -e OPENAI_API_KEY=$OPENAI_API_KEY -e NATS_URL=$NATS_URL -e FASTAGENCY_NATS_PASSWORD=$FASTAGENCY_NATS_PASSWORD -p 8000:8000 -p 8008:8008 -p 8888:8888 --network=host deploy_fastagency",
+    "docker run -p 4222:4222 nats:latest",
+    "npx playwright test -c playwright.llm-sans.config.ts",
+    "npx playwright test -c playwright.llm.config.ts",
+    "npx playwright test -c playwright.gunicorn.config.ts",
+    "npx playwright test"
+  ],
+  "testability": [
+    "fastagency --version",
+    "fastagency --help",
+    "python -m fastagency --version",
+    "python -m fastagency --help",
+    "python -c \"import fastagency; print(fastagency.__version__)\"",
+    "python -m pip show fastagency",
+    "pip list | grep fastagency",
+    "npx playwright --version",
+    "gunicorn --version",
+    "docker --version",
+    "python --version",
+    "curl -sSf https://fastagency.ai/latest/ > /dev/null",
+    "curl -I https://fastagency.ai/latest/",
+    "wget -qO- https://fastagency.ai/latest/ > /dev/null",
+    "curl -I http://localhost:8888",
+    "curl http://localhost:8888",
+    "flyctl --version",
+    "pipx run fastagency --version",
+    "pytest"
+  ]
+}

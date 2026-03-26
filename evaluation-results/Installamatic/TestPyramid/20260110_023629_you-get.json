@@ -1,0 +1,21 @@
+{
+  "installability": [
+    "python -m pip install -e .",
+    "python -m pip install .",
+    "pipenv install -e .",
+    "pip install --upgrade git+https://github.com/soimort/you-get@develop",
+    "pip install you-get",
+    "pip install --upgrade you-get"
+  ],
+  "runnability": [
+    "you-get https://kopasas.tumblr.com/post/69361932517",
+    "you-get https://github.com/soimort/you-get/archive/master.zip",
+    "you-get 'https://www.youtube.com/watch?v=jNQXAC9IVRw'",
+    "you-get --itag=18 'https://www.youtube.com/watch?v=jNQXAC9IVRw'",
+    "you-get https://stallman.org/rms.jpg"
+  ],
+  "testability": [
+    "you-get --version",
+    "you-get -i 'https://www.youtube.com/watch?v=jNQXAC9IVRw'"
+  ]
+}

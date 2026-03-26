@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "pip install tetos"
+  ],
+  "runnability": [
+    "tetos openai --voice echo \"Hello, world!\"",
+    "tetos google \"Hello, world!\"",
+    "tetos edge --lang zh-CN \"你好，世界！\"",
+    "tetos azure \"Hello, world!\" --output output.mp3",
+    "tetos azure \"Hello, world!\" --output test_azure.mp3 && test -s test_azure.mp3",
+    "tetos google \"Hello, world!\" --output test_google.mp3 && test -s test_google.mp3"
+  ],
+  "testability": [
+    "tetos --version",
+    "tetos --help"
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "installability": [
+    "python -m pip install -U pip setuptools wheel",
+    "python -m pip install -r requirements.txt",
+    "python setup.py sdist bdist_wheel",
+    "python -m pip install -e \".[tests,benchmarks]\"",
+    "python -m spacy download en_core_web_sm",
+    "python -m pip install vllm",
+    "make init"
+  ],
+  "runnability": [
+    "python -m vllm.entrypoints.openai.api_server --model meta-llama/Meta-Llama-3-8B-Instruct --tensor-parallel-size 8 --dtype auto --api-key \"$OPENAI_API_KEY\" --gpu-memory-utilization 0.9 --port 5000",
+    "bash run.sh",
+    "./run.sh --corpus_dir corpus --output_dir output --model gpt-3.5-turbo-16k --api_key \"$OPENAI_API_KEY\"",
+    "bash benchmarks/ASQA/run.sh",
+    "bash benchmarks/ASQA/run_generate.sh",
+    "bash benchmarks/ALCE/ASQA/run.sh",
+    "bash benchmarks/HOTPOTQA/run_generate.sh",
+    "python3 benchmarks/ASQA/asqa_benchmark.py --output_dir \".rageval/benchmark\" --split \"gpt_3.5_turbo_instruct\"",
+    "python3 benchmarks/ASQA/generate.py --max_num_examples 500 --max_new_tokens 256 --output_path \"benchmarks/ASQA/output\" --model \"gpt-3.5-turbo-instruct\" --api_key \"$OPENAI_API_KEY\"",
+    "python3 benchmarks/HOTPOTQA/generate.py --subset \"fullwiki\" --num_documents 10 --max_num_examples 500 --max_length 4096 --output_path \"benchmarks/HOTPOT/output\" --cache_path \".rageval/cache\" --model \"gpt-3.5-turbo-0125\" --api_key \"$OPENAI_API_KEY\"",
+    "python3 benchmarks/HOTPOTQA/generate.py --subset \"distractor\" --num_documents 10 --max_num_examples 500 --max_length 4096 --output_path \"benchmarks/HOTPOT/output\" --cache_path \".rageval/cache\" --model \"gpt-3.5-turbo-0125\" --api_key \"$OPENAI_API_KEY\"",
+    "python3 benchmarks/HOTPOTQA/hotpotqa_benchmark.py",
+    "python -m tests.demo"
+  ],
+  "testability": [
+    "python --version",
+    "python3 --version",
+    "pip --version",
+    "pytest --version",
+    "rageval --version",
+    "rageval --help",
+    "pip show rageval",
+    "python -c \"import rageval; print(rageval.__version__)\"",
+    "python -c \"from rageval.evaluations import evaluate; from rageval.metrics import ContextRecall; print('OK')\"",
+    "python -c \"from datasets import Dataset; print('OK')\"",
+    "python -m pytest",
+    "pytest -q",
+    "pytest --cov=rageval",
+    "coverage run -m pytest",
+    "python -m unittest",
+    "pytest -k openai",
+    "pytest tests/units/test_openai_api.py",
+    "pytest tests/units/test_openai_api.py::test_generate",
+    "pytest tests/test_evaluation.py",
+    "pytest tests/test_evaluation.py::test_evaluation",
+    "make test"
+  ]
+}

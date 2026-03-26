@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "pnpm install --frozen-lockfile",
+    "pnpm run build"
+  ],
+  "runnability": [],
+  "testability": [
+    "pnpm test:check:tsc",
+    "pnpm exec vitest run --passWithNoTests",
+    "pnpm exec vitest run ./packages/mermaid/src/diagrams/gantt/ganttDb.spec.ts --coverage",
+    "pnpm test:coverage"
+  ]
+}

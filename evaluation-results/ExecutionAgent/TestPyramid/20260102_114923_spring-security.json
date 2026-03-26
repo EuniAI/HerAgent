@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "./gradlew clean build -PskipCheckExpectedBranchVersion --continue --scan",
+    "./gradlew -PbuildSrc.skipTests=true :spring-security-docs:antora",
+    "./gradlew -q -PbuildSrc.skipTests=true :spring-security-docs:generateAntoraResources"
+  ],
+  "runnability": [
+    "gh workflow run deploy-docs.yml -r $(git rev-parse --abbrev-ref HEAD)"
+  ],
+  "testability": [
+    "./gradlew test"
+  ]
+}

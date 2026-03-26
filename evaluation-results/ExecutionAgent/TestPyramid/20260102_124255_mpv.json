@@ -1,0 +1,22 @@
+{
+  "installability": [
+    "mkdir -p subprojects",
+    "git clone https://code.videolan.org/videolan/libplacebo.git --depth=1 --recursive subprojects/libplacebo",
+    "export CFLAGS=\"$CFLAGS -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=3\"",
+    "meson setup build -Dlibmpv=true -Dtests=true --werror",
+    "meson configure build",
+    "sh TOOLS/gen-osd-font.sh",
+    "meson compile -C build",
+    "meson install -C build"
+  ],
+  "runnability": [
+    "build/mpv --script=/path/to/script.lua /path/to/media.mp4",
+    "build/mpv --no-config --idle=yes",
+    "build/mpv --no-config --ao=null --vo=null --script=/path/to/script.lua /path/to/test.mp4",
+    "build/mpv --no-config --ao=null --vo=null --sub-file=/path/to/subs.srt /path/to/test_with_subs.mkv"
+  ],
+  "testability": [
+    "build/mpv --no-config --ao=null --vo=null --frames=1 /path/to/test.mp4",
+    "meson test -C build"
+  ]
+}

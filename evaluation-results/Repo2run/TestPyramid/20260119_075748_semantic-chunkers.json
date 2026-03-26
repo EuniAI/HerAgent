@@ -1,0 +1,30 @@
+{
+  "installability": [
+    "git clone https://github.com/aurelio-labs/semantic-chunkers.git",
+    "cd semantic-chunkers",
+    "python3 -m venv venv",
+    "source venv/bin/activate",
+    "pip install -e .",
+    "pip install nltk",
+    "python -m nltk.downloader punkt stopwords wordnet",
+    "pip install cohere",
+    "pip install poetry",
+    "poetry install --all-extras"
+  ],
+  "runnability": [
+    "jupyter notebook docs/01-video-chunking.ipynb",
+    "pytest tests/integration -q"
+  ],
+  "testability": [
+    "python -c \"import semantic_chunkers; print(semantic_chunkers.__version__)\"",
+    "python -c \"import semantic_chunkers; print('import ok')\"",
+    "pip show semantic-chunkers",
+    "black --check .",
+    "ruff check .",
+    "mypy .",
+    "make lint",
+    "pytest -q",
+    "pytest tests/unit -q",
+    "make test"
+  ]
+}

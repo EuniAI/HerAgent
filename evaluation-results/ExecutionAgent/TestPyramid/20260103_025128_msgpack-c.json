@@ -1,0 +1,9 @@
+{
+  "installability": [
+    "g++ -std=c++17 -I./third_party/msgpack/include -DMSGPACK_DISABLE_LEGACY_NIL -DMSGPACK_DISABLE_LEGACY_CONVERT -O2 -Wall -Wextra -o bin/app src/main.cpp"
+  ],
+  "runnability": [
+    "./bin/app"
+  ],
+  "testability": []
+}

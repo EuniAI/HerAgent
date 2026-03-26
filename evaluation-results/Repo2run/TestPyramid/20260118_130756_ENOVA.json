@@ -1,0 +1,33 @@
+{
+  "installability": [
+    "conda create -n enova_env python=3.10",
+    "conda activate enova_env",
+    "pip install enova",
+    "pip install enova_instrumentation_llmo-0.0.8-py3-none-any.whl",
+    "npm install",
+    "npm run build",
+    "npm run lint"
+  ],
+  "runnability": [
+    "enova serving run --model mistralai/Mistral-7B-Instruct-v0.1 --host 127.0.0.1 --port 9199",
+    "enova webui run --serving_host 127.0.0.1 --serving_port 9199 --host 127.0.0.1 --port 8501",
+    "enova mon start",
+    "enova pilot run --model mistralai/Mistral-7B-Instruct-v0.1",
+    "enova pilot run --model mistralai/Mistral-7B-Instruct-v0.1 --vllm_mode openai",
+    "npm run dev",
+    "curl http://localhost:8182/instance",
+    "curl http://localhost:9199/v1/models",
+    "curl http://localhost:9199/v1/completions -H \"Content-Type: application/json\" -d '{\"model\": \"mistralai/Mistral-7B-Instruct-v0.1\", \"prompt\": \"San Francisco is a\", \"max_tokens\": 128, \"temperature\": 0}'",
+    "curl -X POST http://localhost:9199/generate -H \"Content-Type: application/json\" -d '{\"prompt\": \"San Francisco is a\", \"max_tokens\": 1024, \"temperature\": 0.9, \"top_p\": 0.9}'"
+  ],
+  "testability": [
+    "enova --version",
+    "enova -h",
+    "enova mon status",
+    "pip show enova-instrumentation-llmo",
+    "python -c \"from enova.llmo import start; print('ok')\"",
+    "curl -f http://localhost:9199/health",
+    "pytest -q",
+    "npm test"
+  ]
+}

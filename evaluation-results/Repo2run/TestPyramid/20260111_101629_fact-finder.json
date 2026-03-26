@@ -1,0 +1,21 @@
+{
+  "installability": [
+    "docker build --pull --rm -f \"neo4j_primekg/Dockerfile\" -t neo4j_primekg:latest \"neo4j_primekg\"",
+    "pip install -e ."
+  ],
+  "runnability": [
+    "docker run -d --restart=always --publish=7474:7474 --publish=7687:7687 --env NEO4J_AUTH=neo4j/opensesame --env NEO4J_server_databases_default__to__read__only=true --env NEO4J_apoc_export_file_enabled=true --env NEO4J_apoc_import_file_enabled=true --env NEO4J_apoc_import_file_use__neo4j__config=true --env NEO4JLABS_PLUGINS=[\"apoc\"] --name neo4j_primekg_service neo4j_primekg:latest",
+    "docker run -d --restart=always --publish=7474:7474 --publish=7687:7687 --volume $PWD/data/kg.csv:/primekg_data/kg.csv:ro --volume $PWD/data/drug_features.tab:/primekg_data/drug_features.tab:ro --volume $PWD/data/disease_features.tab:/primekg_data/disease_features.tab:ro --env NEO4J_AUTH=neo4j/opensesame --env NEO4J_server_databases_default__to__read__only=true --env NEO4J_apoc_export_file_enabled=true --env NEO4J_apoc_import_file_enabled=true --env NEO4J_apoc_import_file_use__neo4j__config=true --env NEO4JLABS_PLUGINS=[\"apoc\"] --name neo4j_primekg_service neo4j_primekg:latest",
+    "streamlit run src/fact_finder/app.py --browser.serverAddress localhost",
+    "streamlit run src/fact_finder/app.py --browser.serverAddress localhost -- --normalized_graph --use_entity_detection_preprocessing",
+    "docker exec neo4j_primekg_service cypher-shell -u neo4j -p opensesame \"CALL apoc.version() YIELD version RETURN version\"",
+    "docker exec neo4j_primekg_service cypher-shell -u neo4j -p opensesame \"CALL dbms.components() YIELD name, versions RETURN name, versions\""
+  ],
+  "testability": [
+    "docker exec neo4j_primekg_service cypher-shell -u neo4j -p opensesame \"RETURN 1\"",
+    "curl -fsS http://localhost:7474",
+    "docker exec neo4j_primekg_service test -f /primekg_data/kg.csv",
+    "curl -fsS http://localhost:8501/_stcore/health",
+    "pytest -q"
+  ]
+}

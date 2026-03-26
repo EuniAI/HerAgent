@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "python3 horus.py",
+    "py horus.py"
+  ],
+  "testability": [
+    "python3 horus.py -h",
+    "py horus.py -h"
+  ]
+}

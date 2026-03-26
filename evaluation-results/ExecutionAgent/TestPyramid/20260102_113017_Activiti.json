@@ -1,0 +1,15 @@
+{
+  "installability": [
+    "mvn -B clean package",
+    "mvn -B clean install",
+    "mvn deploy ${{ env.MAVEN_CLI_OPTS}}"
+  ],
+  "runnability": [
+    "mvn -B verify"
+  ],
+  "testability": [
+    "mvn -B package",
+    "mvn -B test",
+    "mvn -B clean test"
+  ]
+}

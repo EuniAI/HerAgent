@@ -1,0 +1,21 @@
+{
+  "installability": [
+    "pip install -r requirements.txt",
+    "pip install .",
+    "pip install -e .",
+    "python setup.py install",
+    "poetry install",
+    "poetry build",
+    "pip install poetry"
+  ],
+  "runnability": [],
+  "testability": [
+    "pip show mm_toolbox",
+    "python -c \"import mm_toolbox; print('mm_toolbox imported successfully')\"",
+    "python -c \"import mm_toolbox; print(getattr(mm_toolbox, '__version__', 'unknown'))\"",
+    "python -c \"from mm_toolbox import Orderbook; print('Orderbook available')\"",
+    "pytest",
+    "poetry run pytest",
+    "python -m unittest discover -s tests -p 'test_*.py'"
+  ]
+}

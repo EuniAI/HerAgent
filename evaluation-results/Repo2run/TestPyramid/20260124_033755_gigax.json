@@ -1,0 +1,14 @@
+{
+  "installability": [
+    "pip install gigax",
+    "pip install outlines transformers llama-cpp-python"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -c \"import gigax; print(gigax.__version__)\"",
+    "pip show gigax",
+    "python -c \"import outlines\"",
+    "python -c \"import transformers\"",
+    "python -c \"import llama_cpp\""
+  ]
+}

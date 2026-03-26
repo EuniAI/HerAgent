@@ -1,0 +1,32 @@
+{
+  "installability": [
+    "python3 -m pip install -r test-requirements.txt",
+    "python3 -m pip install -r requirements-docs.txt",
+    "python3 -m pip install -e .",
+    "python3 misc/docker/build.py"
+  ],
+  "runnability": [
+    "python3 -m mypy --version",
+    "python3 -m mypy --config-file mypy_self_check.ini -p mypy",
+    "python3 runtests.py",
+    "python3 runtests.py self",
+    "misc/docker/run.sh ./runtests.py self lint",
+    "misc/docker/run.sh pytest mypyc"
+  ],
+  "testability": [
+    "ruff .",
+    "make linkcheck",
+    "pytest -q -k \"MethodCall\"",
+    "python3 -m pytest --cov mypy --cov-config setup.cfg --cov-report=term-missing:skip-covered --cov-report=html",
+    "pytest -q mypy",
+    "pytest -q mypyc",
+    "pytest -q mypy/test/testdiff.py",
+    "pytest -q mypy/test/testsemanal.py::SemAnalTypeInfoSuite",
+    "pytest -n0",
+    "pytest -n0 -k testNewSyntaxBasics",
+    "pytest -k testpythoneval",
+    "pytest -n0 mypy/test/testargs.py::ArgSuite::test_coherence",
+    "pytest -n0 mypy/test/testcheck.py::TypeCheckSuite::testCallingVariableWithFunctionType",
+    "python3 runtests.py mypyc-extra"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "installability": [
+    "pip install comfy-cli",
+    "comfy install",
+    "comfy install --skip-manager",
+    "comfy node install ComfyUI-Impact-Pack",
+    "comfy node update all"
+  ],
+  "runnability": [
+    "comfy launch",
+    "comfy launch --background",
+    "comfy --recent launch",
+    "comfy launch -- --cpu --listen 0.0.0.0",
+    "comfy --workspace=~/comfy launch --background -- --listen 10.0.0.10 --port 8000",
+    "curl -fsS http://127.0.0.1:8188/ >/dev/null"
+  ],
+  "testability": [
+    "comfy --version",
+    "comfy which",
+    "comfy env",
+    "comfy node simple-show installed",
+    "comfy stop"
+  ]
+}

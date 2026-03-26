@@ -1,0 +1,24 @@
+{
+  "installability": [
+    "brew install pipx",
+    "pipx ensurepath",
+    "pipx install goose-ai"
+  ],
+  "runnability": [
+    "goose session start",
+    "goose session resume",
+    "goose run",
+    "goose run instructions.md",
+    "goose run <(echo \"Create a new Python file that prints hello world\")"
+  ],
+  "testability": [
+    "goose --version",
+    "goose help",
+    "goose",
+    "goose providers list",
+    "goose toolkit list",
+    "goose moderators list",
+    "goose session list",
+    "goose shell-completions --generate"
+  ]
+}

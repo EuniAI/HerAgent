@@ -1,0 +1,34 @@
+{
+  "installability": [
+    "sudo make install prefix=/usr/local",
+    "gcc -I. clar.c main.c suite1.c test2.c -o run_tests",
+    "meson install -C builddir",
+    "make",
+    "meson compile -C builddir",
+    "make install",
+    "make po/git-core.pot",
+    "meson setup builddir",
+    "gcc -I. clar.c main.c adding.c -o testit",
+    "make install prefix=/opt/gitk",
+    "make po-init PO_FILE=po/XX.po",
+    "make po-update PO_FILE=po/XX.po",
+    "make po/git.pot"
+  ],
+  "runnability": [
+    "gitk",
+    "./gitk",
+    "gitk path/to/file",
+    "gitk path/to/directory",
+    "gitk branch-name",
+    "gitk v1.0..v2.0",
+    "gitk --all",
+    "gitk --follow path/to/file"
+  ],
+  "testability": [
+    "msgfmt --check",
+    "git-po-helper check-po po/XX.po",
+    "git-po-helper check-commits <rev-list-opts>",
+    "./testit",
+    "./run_tests"
+  ]
+}

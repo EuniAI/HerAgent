@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "if [ -f pom.xml ]; then mvn -B -ntp -DskipTests package; fi",
+    "if [ -f build.gradle ] || [ -f build.gradle.kts ]; then ./gradlew assemble -x test || gradle assemble -x test; fi",
+    "if [ -f package.json ]; then npm ci && npm run build --if-present; fi",
+    "if [ -f go.mod ]; then go build ./...; fi",
+    "if [ -f Cargo.toml ]; then cargo build --locked; fi",
+    "if compgen -G \"*.sln\" > /dev/null || compgen -G \"*.csproj\" > /dev/null; then dotnet restore && dotnet build -c Release --no-restore; fi",
+    "if [ -f requirements.txt ]; then pip install -r requirements.txt; fi",
+    "if [ -f pyproject.toml ] || [ -f setup.py ]; then pip install .; fi"
+  ],
+  "runnability": [
+    "if [ -f package.json ]; then npm run -s start --if-present; fi",
+    "if [ -f pom.xml ]; then mvn -B -ntp verify; fi",
+    "if [ -f package.json ]; then npm run -s test:integration --if-present; fi",
+    "if [ -f go.mod ]; then go test -run Integration ./...; fi",
+    "if [ -f Cargo.toml ]; then cargo test --tests --quiet; fi"
+  ],
+  "testability": [
+    "if [ -f pom.xml ]; then mvn -B -ntp -Dtest='*Smoke*' -DfailIfNoTests=false test; fi",
+    "if [ -f package.json ]; then npm run -s test:smoke --if-present; fi",
+    "if [ -f go.mod ]; then go test -run Smoke ./...; fi",
+    "if [ -f Cargo.toml ]; then cargo test smoke --quiet; fi"
+  ]
+}

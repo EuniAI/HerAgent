@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "pipx install poetry",
+    "poetry install",
+    "bun install",
+    "bun run build",
+    "make install",
+    "make docker-build"
+  ],
+  "runnability": [
+    "sudo docker compose up -d",
+    "bun dev",
+    "python experiments/train_and_test.py anthropic_context test test",
+    "python experiments/train_and_test.py anthropic_base test test"
+  ],
+  "testability": [
+    "make check-codestyle",
+    "make check-safety",
+    "make formatting",
+    "make lint",
+    "poetry run denser-retriever --help",
+    "python hello_milvus.py",
+    "make test"
+  ]
+}

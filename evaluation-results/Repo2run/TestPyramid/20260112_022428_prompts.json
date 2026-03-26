@@ -1,0 +1,16 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip",
+    "python -m pip install build",
+    "python -m build"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -m venv venv-sdist",
+    "python -m venv venv-wheel",
+    "venv-sdist/bin/python -m pip install ./dist/prompts-*.tar.gz",
+    "venv-wheel/bin/python -m pip install ./dist/prompts-*.whl",
+    "venv-sdist/bin/python -c \"import prompts\"",
+    "venv-wheel/bin/python -c \"import prompts\""
+  ]
+}

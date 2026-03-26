@@ -1,0 +1,45 @@
+{
+  "installability": [
+    "pip install -r requirements.txt",
+    "pip install \"mkdocs-material[imaging]\"",
+    "mkdocs build -f docs/mkdocs.yml"
+  ],
+  "runnability": [
+    "python -m alpha_codium.solve_dataset --dataset_name valid_and_test_processed --split_name test",
+    "python -m alpha_codium.solve_dataset --dataset_name valid_and_test_processed --split_name valid",
+    "python -m alpha_codium.solve_dataset --dataset_name valid_and_test_processed --split_name valid --database_solution_path ./valid_and_test_processed_valid_solution_database.json",
+    "python -m alpha_codium.solve_problem --dataset_name valid_and_test_processed --split_name valid --problem_number 0",
+    "python -m alpha_codium.solve_problem --dataset_name ./codecontests_valid_and_test_processed_alpha_codium --split_name test --problem_number 12",
+    "python -m alpha_codium.evaluate_dataset --dataset_name valid_and_test_processed --split_name test --database_solution_path ./valid_database_solution.json",
+    "python -m alpha_codium.evaluate_dataset --dataset_name valid_and_test_processed --split_name valid --database_solution_path ./gpt_3_solution_database_valid.json",
+    "python -m alpha_codium.solve_my_problem --my_problem_json_file /path/to/my_problem.json",
+    "python -m alpha_codium.solve_dataset",
+    "python -m alpha_codium.solve_problem",
+    "python -m alpha_codium.evaluate_dataset",
+    "mkdocs serve -f docs/mkdocs.yml"
+  ],
+  "testability": [
+    "python -m alpha_codium.solve_dataset --help",
+    "python -m alpha_codium.solve_problem --help",
+    "python -m alpha_codium.evaluate_dataset --help",
+    "python --version",
+    "pytest --version",
+    "mkdocs --version",
+    "pytest",
+    "pytest -q",
+    "pytest -v",
+    "python -m pytest",
+    "python -m pytest -q",
+    "python -m pytest -v",
+    "pytest tests",
+    "python -m pytest tests",
+    "pytest tests/alpha_codium/code_contests/eval",
+    "pytest tests/alpha_codium/code_contests/eval/test_local_exec.py",
+    "pytest tests/alpha_codium/code_contests/eval/test_local_exec.py::test_runtime_issues",
+    "pytest tests/alpha_codium/code_contests/eval/test_local_exec.py::test_happy_paths",
+    "pytest -k test_runtime_issues tests/alpha_codium/code_contests/eval/test_local_exec.py",
+    "pytest -k test_happy_paths tests/alpha_codium/code_contests/eval/test_local_exec.py",
+    "pytest --maxfail=1 -q tests/alpha_codium/code_contests/eval/test_local_exec.py",
+    "pytest -s tests/alpha_codium/code_contests/eval/test_local_exec.py"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "installability": [
+    "pip install -e .",
+    "pip install .",
+    "python setup.py sdist bdist_wheel",
+    "make install-dev",
+    "mkdocs build",
+    "pip install .[dev]",
+    "pip install -e .[dev]",
+    "pip install .[duckdb]",
+    "pip install .[spark]",
+    "pip install .[postgres]",
+    "pip install .[bigquery]",
+    "pip install .[redshift]",
+    "pip install .[snowflake]",
+    "pip install .[databricks]",
+    "pip install .[pandas]",
+    "pip install .[docs]",
+    "pip install .[openai]"
+  ],
+  "runnability": [
+    "mkdocs serve",
+    "pytest -m integration"
+  ],
+  "testability": [
+    "python -c \"import sqlframe; print(sqlframe.__version__)\"",
+    "python -c \"from sqlframe import activate; activate(engine='duckdb'); print('SQLFrame activated on duckdb')\"",
+    "python -c \"from sqlframe.duckdb import DuckDBSession; DuckDBSession.builder.getOrCreate(); print('DuckDB session OK')\"",
+    "python -c \"import duckdb; print(duckdb.__version__)\"",
+    "python -c \"from sqlframe import activate; activate(engine='duckdb'); from pyspark.sql import SparkSession; SparkSession.builder.getOrCreate(); print('SparkSession started with DuckDB')\"",
+    "ruff check .",
+    "mypy sqlframe",
+    "pre-commit run --all-files",
+    "pytest",
+    "pytest -q",
+    "pytest -n auto",
+    "pytest -m fast",
+    "make local-test"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "installability": [
+    "docker compose build"
+  ],
+  "runnability": [
+    "docker compose up -d",
+    "docker run -d --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive",
+    "docker exec -it --user=abc icloud /bin/sh -c \"icloud --username=$ICLOUD_USERNAME --session-directory=/config/session_data\""
+  ],
+  "testability": [
+    "docker exec icloud icloud --version",
+    "docker ps --filter name=icloud --format \"{{.Names}}\""
+  ]
+}

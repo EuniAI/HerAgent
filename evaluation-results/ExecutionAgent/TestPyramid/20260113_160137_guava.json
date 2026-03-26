@@ -1,0 +1,11 @@
+{
+  "installability": [
+    "./gradlew build --no-daemon"
+  ],
+  "runnability": [
+    "util/gradle_integration_tests.sh"
+  ],
+  "testability": [
+    "./gradlew test --no-daemon"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "uv tool install --python 3.12 posting"
+  ],
+  "runnability": [
+    "posting"
+  ],
+  "testability": [
+    "posting --version",
+    "mkdir -p my-collection && posting --collection my-collection --help"
+  ]
+}

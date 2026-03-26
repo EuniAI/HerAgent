@@ -1,0 +1,28 @@
+{
+  "installability": [
+    "python -m pip install -r requirements.txt",
+    "python -m pip install fastapi \"uvicorn[standard]\"",
+    "python -m pip install hypercorn"
+  ],
+  "runnability": [
+    "python main.py",
+    "uvicorn main:app",
+    "uvicorn main:app --host 0.0.0.0 --port 8000",
+    "uvicorn main:app --reload",
+    "uvicorn app.main:app --reload",
+    "hypercorn main:app",
+    "hypercorn main:app --reload",
+    "gunicorn -k uvicorn.workers.UvicornWorker main:app",
+    "pytest -m integration",
+    "pytest tests/integration"
+  ],
+  "testability": [
+    "curl -f http://127.0.0.1:8000/",
+    "curl -f http://127.0.0.1:8000/docs",
+    "curl -f http://127.0.0.1:8000/redoc",
+    "curl -f http://localhost:8000/",
+    "http http://127.0.0.1:8000",
+    "pytest",
+    "tox"
+  ]
+}

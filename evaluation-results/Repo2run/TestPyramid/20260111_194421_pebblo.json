@@ -1,0 +1,51 @@
+{
+  "installability": [
+    "python3 -m venv .venv",
+    "source .venv/bin/activate",
+    "pip install --upgrade pip",
+    "pip install build",
+    "pip install -r requirements.txt",
+    "pip install --no-cache-dir -r tests/test_requirements.txt",
+    "pip3 install -r tests/integration/samples/requirements.txt --force-reinstall",
+    "git clone https://github.com/daxa-ai/langchain-google.git",
+    "git clone https://github.com/daxa-ai/langchain.git",
+    "(cd libs/community; pip install .)",
+    "(cd libs/langchain; pip install .)",
+    "pip3 install langchain-google-community .",
+    "pip3 install langchain-community .",
+    "pip install pebblo --extra-index-url https://packages.daxa.ai/simple/",
+    "pip install -r langchain/identity-rag/requirements.txt",
+    "sudo apt-get install -y libpango-1.0-0 libpangoft2-1.0-0",
+    "brew install pango",
+    "pip install weasyprint",
+    "yarn",
+    "yarn build",
+    "python3 -m build --wheel",
+    "pkg_file=$(ls dist | grep .whl) && pip3 install \"dist/$pkg_file\" --force-reinstall"
+  ],
+  "runnability": [
+    "pebblo",
+    "docker run -p 8000:8000 docker.daxa.ai/daxaai/pebblo",
+    "yarn start",
+    "python3 pebblo_saferag.py",
+    "python3 acme_corp_rag.py",
+    "python3 semantic_rag.py",
+    "python3 pebblo_semantic_rag.py",
+    "python3 pebblo_safeload.py",
+    "python3 pebblo_identity_rag.py",
+    "python3 pebblo_csvloader.py",
+    "python3 langchain/identity-rag/pebblo_identity_rag.py",
+    "python3 acme_corp_rag_pebblo.py",
+    "kubectl apply -f config.yaml",
+    "kubectl apply -f pvc.yaml",
+    "kubectl apply -f service.yaml",
+    "kubectl apply -f deploy.yaml",
+    "pytest -q tests/integration/samples"
+  ],
+  "testability": [
+    "sleep 10",
+    "grep -q \"Uvicorn running on http://localhost:8000 (Press CTRL+C to quit)\" /tmp/logs/pebblo.log",
+    "grep -q \"INFO - PDF report generated, please check path : /home/runner/.pebblo/\" /tmp/logs/pebblo.log",
+    "make test"
+  ]
+}

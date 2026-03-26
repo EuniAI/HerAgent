@@ -1,0 +1,12 @@
+{
+  "installability": [
+    "pdm install",
+    "pdm build"
+  ],
+  "runnability": [
+    "duckdb store.db"
+  ],
+  "testability": [
+    "pdm run pytest"
+  ]
+}

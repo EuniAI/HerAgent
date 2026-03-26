@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "poetry env use python${{ matrix.python-version }}",
+    "poetry install --no-interaction --with dev",
+    "poetry check",
+    "pip install neo4j-runway"
+  ],
+  "runnability": [
+    "poetry run pytest tests/integration --ignore=tests/integration/code_generation/load_csv"
+  ],
+  "testability": [
+    "poetry run coverage run -m pytest tests/unit",
+    "poetry run ruff check --select I .",
+    "poetry run ruff format --check .",
+    "poetry run mypy --strict --ignore-missing-imports --allow-subclassing-any --allow-untyped-calls ."
+  ]
+}

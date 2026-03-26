@@ -1,0 +1,45 @@
+{
+  "installability": [
+    "python -m pip install -U build",
+    "python -m build",
+    "python -m pip install -e '.[dev]'",
+    "python -m pip install -r requirements-dev.txt",
+    "python -m pip install .",
+    "python setup.py sdist bdist_wheel"
+  ],
+  "runnability": [
+    "python bench.py setup=iql-view",
+    "python bench.py setup=sql-view",
+    "python bench.py setup=collection",
+    "python bench.py --multirun setup=iql-view,sql-view,collection",
+    "python bench.py --multirun setup=iql-view setup/llm=gpt-3.5-turbo,claude-3.5-sonnet",
+    "python bench.py --multirun setup=sql-view setup/llm=gpt-3.5-turbo,claude-3.5-sonnet",
+    "python bench.py setup=iql-view neptune=True",
+    "python evaluate.py --multirun prompt/type=filtering-assessor prompt/signature=baseline prompt/program=predict,cot",
+    "python evaluate.py --multirun prompt/type=aggregation-assessor prompt/signature=baseline prompt/program=predict,cot",
+    "python evaluate.py --multirun prompt/type=filtering-assessor prompt/signature=baseline prompt/program=predict llm=gpt-3.5-turbo,claude-3.5-sonnet",
+    "python evaluate.py neptune=True",
+    "python train.py optimizer=copro optimizer.params.breadth=2 optimizer.params.depth=3 optimizer.params.init_temperature=1.0",
+    "python train.py --multirun prompt/type=filtering-assessor prompt/signature=baseline prompt/program=predict,cot",
+    "python train.py prompt/type=filtering-assessor prompt/signature=baseline prompt/program=predict optimizer=mipro",
+    "python train.py prompt/type=filtering-assessor prompt/signature=baseline prompt/program=predict"
+  ],
+  "testability": [
+    "python --version",
+    "python -m pip show dbally",
+    "python -c \"import dbally\"",
+    "python -c \"import dbally; print(getattr(dbally, '__version__', ''))\"",
+    "dbally --help",
+    "dbally-cli --help",
+    "python -m dbally_cli.main --help",
+    "dbally-cli generate-text2sql-view --help",
+    "python -m dbally_cli.main generate-text2sql-view --help",
+    "python train.py --help",
+    "python evaluate.py --help",
+    "python -c \"from dbally import create_collection; from dbally.llms.litellm import LiteLLM; create_collection('my_collection', llm=LiteLLM())\"",
+    "coverage run -m pytest -v -p no:warnings --junitxml=report.xml tests/",
+    "python -m pytest",
+    "coverage report",
+    "coverage xml"
+  ]
+}

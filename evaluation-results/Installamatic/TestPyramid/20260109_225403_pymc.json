@@ -1,0 +1,14 @@
+{
+  "installability": [
+    "conda create -n pymc_env -c conda-forge python=3.11 \"pymc>=5\"",
+    "conda activate pymc_env",
+    "conda install -c conda-forge blackjax nutpie numpyro",
+    "pip install -r requirements-dev.txt"
+  ],
+  "runnability": [],
+  "testability": [
+    "pytest -v tests/model/test_core.py -k coord",
+    "python -c \"import pymc as pm; print(pm.__version__)\"",
+    "PYTENSOR_FLAGS=\"floatX=${FLOATX:-float64},gcc__cxxflags='-march=core2'\" pytest -v --cov=pymc --cov-report=xml --cov-report=term"
+  ]
+}

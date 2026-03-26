@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "pip install -e .",
+    "pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "bash run_scripts/${dataset}/train.sh",
+    "python3 download_data_cc3m.py",
+    "python3 download_data_cc12m.py",
+    "python3 data/extract_frames.py",
+    "bash run_scripts/${dataset}/test.sh ${checkpoint_path}",
+    "bash run_scripts/${dataset}/test.sh"
+  ],
+  "testability": [
+    "test -s downloaded_validation_report.tsv",
+    "test -f saved_model.tar",
+    "tar -tf saved_model.tar >/dev/null",
+    "pytest -q"
+  ]
+}

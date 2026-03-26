@@ -1,0 +1,29 @@
+{
+  "installability": [
+    "python -m venv .venv",
+    "source .venv/bin/activate",
+    "python -m pip install -r requirements.txt",
+    "python -m pip install .",
+    "python setup.py sdist bdist_wheel",
+    "python -m spacy download en_core_web_trf"
+  ],
+  "runnability": [],
+  "testability": [
+    "pip check",
+    "pytest --version",
+    "python -c \"import spacy, docling, pandas, srsly; print('OK')\"",
+    "python -c \"import spacy_layout; print(spacy_layout.__version__)\"",
+    "python -c \"from spacy_layout import spaCyLayout; print(spaCyLayout)\"",
+    "python -c \"import spacy; spacy.load('en_core_web_trf'); print('model OK')\"",
+    "pytest",
+    "pytest tests/test_general.py",
+    "pytest tests/test_general.py::test_simple",
+    "pytest tests/test_general.py::test_general",
+    "pytest tests/test_general.py::test_bounding_box",
+    "pytest tests/test_general.py::test_table",
+    "pytest tests/test_general.py::test_table_placeholder",
+    "pytest tests/test_general.py::test_simple_pipe",
+    "pytest tests/test_general.py::test_serialize_objects",
+    "pytest tests/test_general.py::test_serialize_roundtrip"
+  ]
+}

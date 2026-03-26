@@ -1,0 +1,37 @@
+{
+  "installability": [
+    "conda env create -f env.yml",
+    "conda activate spiritlm",
+    "pip install -e '.[dev]'",
+    "pip install -e '.[eval]'"
+  ],
+  "runnability": [
+    "jupyter notebook examples/speech_tokenizer/spiritlm_speech_tokenizer.ipynb",
+    "jupyter notebook examples/speech_generation/spirit_model.ipynb",
+    "jupyter lab examples/speech_tokenizer/spiritlm_speech_tokenizer.ipynb",
+    "torchrun --nnodes 1 --nproc-per-node 1 spiritlm/eval/stsp/predict_stsp.py --model $spiritlm --eval_manifest_path data/stsp_data/manifest/emov/emov.test.jsonl --eval --write_pred ./pred_s_t.jsonl --input_output speech_text",
+    "torchrun --nnodes 1 --nproc-per-node 1 spiritlm/eval/stsp/predict_stsp.py --model $spiritlm --eval_manifest_path data/stsp_data/manifest/emov/emov.test.jsonl --eval --write_pred ./pred_t_t.jsonl --input_output text_text",
+    "torchrun --nnodes 1 --nproc-per-node 1 spiritlm/eval/stsp/predict_stsp.py --model $spiritlm --eval_manifest_path data/stsp_data/manifest/emov/emov.test.jsonl --eval --write_pred ./pred_s_s.jsonl --input_output speech_speech",
+    "torchrun --nnodes 1 --nproc-per-node 1 spiritlm/eval/stsp/predict_stsp.py --model $spiritlm --eval_manifest_path data/stsp_data/manifest/emov/emov.test.jsonl --eval --write_pred ./pred_t_s.jsonl --input_output text_speech",
+    "python spiritlm/eval/eval_stsp.py --ref_file $REF_FILE --pred_file $pred_file",
+    "jupyter nbconvert --to notebook --execute examples/speech_tokenizer/spiritlm_speech_tokenizer.ipynb --output executed.ipynb",
+    "jupyter nbconvert --execute --to notebook --inplace examples/speech_generation/spirit_model.ipynb",
+    "python -c \"from spiritlm.model.spiritlm_model import Spiritlm, OutputModality, GenerationInput, ContentType; from transformers import GenerationConfig; spirit_lm=Spiritlm('spirit-lm-base-7b'); spirit_lm.generate(output_modality=OutputModality.TEXT, interleaved_inputs=[GenerationInput(content='The largest country in the world is', content_type=ContentType.TEXT)], generation_config=GenerationConfig(temperature=0.9, top_p=0.95, max_new_tokens=50, do_sample=True))\"",
+    "python -c 'from spiritlm.speech_tokenizer import spiritlm_base; t=spiritlm_base(); s=t.encode_string(\"examples/audio/7143-88743-0029.flac\"); import soundfile as sf; wav=t.decode(s, speaker_id=2); sf.write(\"resyn_dedup.wav\", wav, 16000)'",
+    "python -c 'from spiritlm.speech_tokenizer import spiritlm_base; t=spiritlm_base(); units=t.encode_units(\"examples/audio/7143-88743-0029.flac\"); import soundfile as sf; wav=t.decode(units, speaker_id=2, dur_pred=False); sf.write(\"resyn.wav\", wav, 16000)'"
+  ],
+  "testability": [
+    "mkdir data/stsp_data",
+    "wget https://dl.fbaipublicfiles.com/textless_nlp/spiritlm/stsp.tar.gz",
+    "tar -xvzf stsp.tar.gz -C data/stsp_data --strip-components=1",
+    "python spiritlm/eval/stsp/sanity_check_download.py",
+    "python -c \"import spiritlm; print(getattr(spiritlm, '__version__', 'unknown'))\"",
+    "python -c \"import spiritlm; print('spiritlm import OK')\"",
+    "python -c \"from spiritlm.model.spiritlm_model import Spiritlm; Spiritlm('spirit-lm-base-7b')\"",
+    "python -c \"from spiritlm.model.spiritlm_model import Spiritlm; Spiritlm('spirit-lm-expressive-7b')\"",
+    "python -c 'from spiritlm.speech_tokenizer import spiritlm_base; t=spiritlm_base(); print(t.encode_string(\"examples/audio/7143-88743-0029.flac\"))'",
+    "python -c 'from spiritlm.speech_tokenizer import spiritlm_base; t=spiritlm_base(); print(t.encode_units(\"examples/audio/7143-88743-0029.flac\"))'",
+    "python -c 'from spiritlm.speech_tokenizer import spiritlm_expressive; t=spiritlm_expressive(); print(t.encode_string(\"examples/audio/7143-88743-0029.flac\"))'",
+    "pytest"
+  ]
+}

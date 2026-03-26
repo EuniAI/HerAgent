@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "pip install -e \".[docs]\"",
+    "python -m pip install --upgrade build wheel",
+    "python -m build",
+    "doc-builder build datasets docs/source/ --build_dir ~/tmp/test-build"
+  ],
+  "runnability": [
+    "doc-builder preview datasets docs/source/",
+    "twine check dist/*"
+  ],
+  "testability": [
+    "doc-builder --help",
+    "python -c \"import datasets; print(datasets.__version__)\"",
+    "pytest -q"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "installability": [
+    "pip install treescope"
+  ],
+  "runnability": [],
+  "testability": [
+    "pip show treescope",
+    "python -c \"import treescope; print('treescope import OK')\"",
+    "python -c \"import treescope; print(getattr(treescope, '__version__', 'unknown'))\""
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "cd WHISPERKIT_ROOT_DIR && pip install -e .",
+    "pip install -e '.[evals,pipelines]'",
+    "pip install -e '.[pipelines]'",
+    "pip install -e '.[android]'",
+    "conda create -n whisperkit python=3.11 -y && conda activate whisperkit",
+    "brew install ffmpeg"
+  ],
+  "runnability": [
+    "whisperkit-generate-model --model-version <model-version> --output-dir <output-dir>",
+    "whisperkit-evaluate-model --model-version <model-version> --output-dir <output-dir>",
+    "python tests/test_aihub.py --persistent-cache-dir <output-path>",
+    "MODEL_REPO_ID=my-org/my-whisper-repo-name whisperkit-generate-model --model-version distil-whisper/distil-small.en --output-dir <output-dir>",
+    "whisperkit-evaluate-model --model-version <model-version> --output-dir <output-dir> --evaluation-dataset librispeech",
+    "whisperkit-evaluate-model --model-version <model-version> --output-dir <output-dir> --evaluation-dataset librispeech-debug",
+    "whisperkit-evaluate-model --model-version <model-version> --output-dir <output-dir> --evaluation-dataset earnings22"
+  ],
+  "testability": [
+    "whisperkit-evaluate-model -h",
+    "whisperkit-generate-model -h",
+    "huggingface-cli whoami",
+    "pytest -q"
+  ]
+}

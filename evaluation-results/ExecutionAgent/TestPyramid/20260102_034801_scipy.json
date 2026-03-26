@@ -1,0 +1,9 @@
+{
+  "installability": [],
+  "runnability": [
+    "asv run --skip-existing-commits --steps 10 ALL",
+    "spin bench --submodule sparse.Arithmetic",
+    "spin bench --compare main --submodule sparse.Arithmetic"
+  ],
+  "testability": []
+}

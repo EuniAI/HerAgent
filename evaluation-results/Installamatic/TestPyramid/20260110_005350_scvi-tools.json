@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip wheel uv",
+    "pip install -e \".[dev]\""
+  ],
+  "runnability": [],
+  "testability": [
+    "pip show scvi-tools",
+    "pre-commit run --all-files",
+    "python -c \"import scvi; print(scvi.__version__)\"",
+    "pytest",
+    "pytest tests/test_my_change.py",
+    "pytest tests/test_my_change.py::test_my_change",
+    "coverage run -m pytest -v --color=yes",
+    "coverage report -m"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "installability": [
+    "pip install groq",
+    "pip install python-dotenv",
+    "pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "curl -sS https://api.groq.com/openai/v1/models -H \"Authorization: Bearer $GROQ_API_KEY\"",
+    "curl -sS https://api.groq.com/openai/v1/models/$MODEL -H \"Authorization: Bearer $GROQ_API_KEY\"",
+    "curl -sS https://api.groq.com/openai/v1/embeddings -H \"Authorization: Bearer $GROQ_API_KEY\" -H \"Content-Type: application/json\" -d '{\"model\":\"'\"$MODEL\"'\",\"input\":\"hello world\"}'",
+    "curl -sS https://api.groq.com/openai/v1/chat/completions -H \"Authorization: Bearer $GROQ_API_KEY\" -H \"Content-Type: application/json\" -d '{\"model\":\"'\"$MODEL\"'\",\"messages\":[{\"role\":\"user\",\"content\":\"Hello\"}]}'",
+    "curl -sS -X POST https://api.groq.com/openai/v1/audio/transcriptions -H \"Authorization: Bearer $GROQ_API_KEY\" -F \"model=$MODEL\" -F \"file=@$AUDIO_FILE\"",
+    "curl -sS -X POST https://api.groq.com/openai/v1/audio/translations -H \"Authorization: Bearer $GROQ_API_KEY\" -F \"model=$MODEL\" -F \"file=@$AUDIO_FILE\""
+  ],
+  "testability": [
+    "pip --version",
+    "python --version",
+    "pip show groq",
+    "pip show python-dotenv",
+    "python -c \"import groq; print(groq.__version__)\"",
+    "python -c \"from groq import Groq; print('Groq client import OK')\"",
+    "python -m unittest -v"
+  ]
+}

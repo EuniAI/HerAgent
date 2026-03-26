@@ -1,0 +1,12 @@
+{
+  "installability": [
+    "pip install \"rerankers[all]\""
+  ],
+  "runnability": [],
+  "testability": [
+    "pip show rerankers",
+    "pip check",
+    "python -c \"import rerankers; print('ok')\"",
+    "python -c \"import importlib.metadata as m; print(m.version('rerankers'))\""
+  ]
+}

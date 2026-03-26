@@ -1,0 +1,22 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip",
+    "pip install -r requirements.txt",
+    "pip install nuitka",
+    "brew install gettext",
+    "echo 'export DYLD_LIBRARY_PATH=\"/usr/local/opt/gettext/lib:$DYLD_LIBRARY_PATH\"' >> $GITHUB_ENV",
+    "pyside6-rcc QRC_FILE -o QRC_PY_FILE",
+    "pyside6-uic ui_file -o py_file",
+    "nuitka --show-progress --remove-output --lto=no --output-dir=./output/windows --main=\"video_mosaic.py\" --standalone --assume-yes-for-downloads --enable-plugin=pyside6 --windows-disable-console",
+    "nuitka --output-dir=./output/linux --main=\"video_mosaic.py\" --standalone --assume-yes-for-downloads --enable-plugin=pyside6",
+    "nuitka --output-dir=./output/macos --main=\"video_mosaic.py\" --standalone --assume-yes-for-downloads --enable-plugin=pyside6"
+  ],
+  "runnability": [
+    "python video_mosaic.py"
+  ],
+  "testability": [
+    "python --version",
+    "python -c \"import PySide6; import sys; print(PySide6.__version__)\"",
+    "pytest -q"
+  ]
+}

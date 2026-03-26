@@ -1,0 +1,26 @@
+{
+  "installability": [
+    "python -m pip install .",
+    "python -m pip install -e .",
+    "python -m pip install pennylane",
+    "python setup.py install",
+    "python setup.py develop"
+  ],
+  "runnability": [
+    "[none — PennyLane is a library and does not have a single “main service” entry point]",
+    "pl-device-test",
+    "pl-device-test --device default.qubit"
+  ],
+  "testability": [
+    "python -c \"import pennylane as qml; qml.about()\"",
+    "python -c \"import pennylane; print(pennylane.__version__)\"",
+    "python -c \"import pennylane; print('PennyLane import OK')\"",
+    "python -m pip show pennylane",
+    "python -m pip list | grep -i pennylane",
+    "pl-device-test --help",
+    "python --version",
+    "python -m pip --version",
+    "python -c \"import pennylane as qml; dev = qml.device('default.qubit', wires=1); @qml.qnode(dev) def circuit(): qml.Hadamard(wires=0); return qml.expval(qml.PauliZ(0)); print(circuit())\"",
+    "python -m pytest"
+  ]
+}

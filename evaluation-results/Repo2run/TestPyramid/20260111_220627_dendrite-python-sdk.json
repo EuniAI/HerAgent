@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "pipx install poetry",
+    "python -m venv venv",
+    "source venv/bin/activate",
+    "poetry install --with dev",
+    "poetry check",
+    "poetry run playwright install chromium",
+    "poetry run dendrite install",
+    "rm -rf dist/*",
+    "poetry build"
+  ],
+  "runnability": [],
+  "testability": [
+    "poetry run pylint dendrite/ --errors-only",
+    "poetry run flake8 dendrite/ --count --select=E9,F63,F7,F82 --show-source --statistics",
+    "poetry run pytest tests/tests_async",
+    "poetry run pytest tests/tests_sync"
+  ]
+}

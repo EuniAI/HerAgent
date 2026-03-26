@@ -1,0 +1,15 @@
+{
+  "installability": [
+    "npm ci",
+    "npm install",
+    "npm run build"
+  ],
+  "runnability": [
+    "npm run docs-serve"
+  ],
+  "testability": [
+    "npm run test",
+    "npm run js-test",
+    "npm run js-test-karma"
+  ]
+}

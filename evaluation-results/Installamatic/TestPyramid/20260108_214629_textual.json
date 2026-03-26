@@ -1,0 +1,19 @@
+{
+  "installability": [
+    "pip install textual",
+    "pip install textual-dev",
+    "pipx install faqtory",
+    "faqtory build"
+  ],
+  "runnability": [
+    "textual run text_style.py",
+    "python pride.py",
+    "python -m textual"
+  ],
+  "testability": [
+    "python -m textual --version",
+    "textual run textual/examples/easing.py",
+    "textual run textual/examples/borders.py",
+    "textual run textual/examples/colors.py"
+  ]
+}

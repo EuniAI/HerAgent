@@ -1,0 +1,10 @@
+{
+  "installability": [
+    "pip install -e ."
+  ],
+  "runnability": [],
+  "testability": [
+    "python -m pip check",
+    "python -m unittest discover -v"
+  ]
+}

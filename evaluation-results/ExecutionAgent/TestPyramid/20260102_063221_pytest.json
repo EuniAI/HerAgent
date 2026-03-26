@@ -1,0 +1,9 @@
+{
+  "installability": [
+    "tox -e docs"
+  ],
+  "runnability": [],
+  "testability": [
+    "pytest"
+  ]
+}

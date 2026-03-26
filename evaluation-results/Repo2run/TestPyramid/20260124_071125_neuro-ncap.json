@@ -1,0 +1,28 @@
+{
+  "installability": [
+    "docker build -t neuro-ncap:latest -f docker/Dockerfile .",
+    "python -m pip install -r requirements.txt",
+    "singularity build neuro-ncap.sif docker-daemon://neuro-ncap:latest",
+    "bash scripts/downloads/download_neurad_weights.sh",
+    "python -m pip install -e ."
+  ],
+  "runnability": [
+    "./single_machine_docker_run_eval.sh",
+    "./slurm_singularity_run_eval.sh",
+    "uvicorn main:app --host 0.0.0.0 --port 8000 --reload",
+    "uvicorn rendering_server:app --host 0.0.0.0 --port 8001 --reload",
+    "python -m neuro_ncap.visualization.scenario_visualizer --scene scene-0103",
+    "curl -f -X POST http://localhost:8000/infer -H \"Content-Type: application/json\" -d '{}'",
+    "curl -f -X POST http://localhost:8000/reset",
+    "curl -f -X POST http://localhost:8001/update_actors -H \"Content-Type: application/json\" -d '{}'",
+    "curl -f -X POST http://localhost:8001/render_image -H \"Content-Type: application/json\" -d '{}' --output image.png",
+    "curl -f http://localhost:8001/start_time",
+    "curl -f http://localhost:8001/get_actors"
+  ],
+  "testability": [
+    "curl -f http://localhost:8000/alive",
+    "curl -f http://localhost:8001/alive",
+    "python -m neuro_ncap.visualization.scenario_visualizer --help",
+    "pytest -q"
+  ]
+}

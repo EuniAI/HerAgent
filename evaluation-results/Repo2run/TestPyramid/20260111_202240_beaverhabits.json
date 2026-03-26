@@ -1,0 +1,19 @@
+{
+  "installability": [
+    "docker build -t beaverhabits:local .",
+    "python -m pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "docker run -d --name beaverhabits -u $(id -u):$(id -g) -e FIRST_DAY_OF_WEEK=0 -e HABITS_STORAGE=USER_DISK -e MAX_USER_COUNT=1 -v /path/to/host/directory:/app/.user/ -p 8080:8080 --restart unless-stopped daya0576/beaverhabits:latest",
+    "uvicorn beaverhabits.main:app --reload --port 9001 --host 0.0.0.0",
+    "uvicorn beaverhabits.main:app --workers 1 --log-level info --port 8080 --host 0.0.0.0",
+    "pytest -m integration",
+    "pytest tests/integration -q"
+  ],
+  "testability": [
+    "curl -fsS http://localhost:8080/ -o /dev/null",
+    "curl -fsS http://localhost:9001/ -o /dev/null",
+    "pytest -q",
+    "pytest -k unit"
+  ]
+}

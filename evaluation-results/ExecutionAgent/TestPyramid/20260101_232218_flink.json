@@ -1,0 +1,40 @@
+{
+  "installability": [
+    "./mvnw clean package -DskipTests -Djdk11 -Pjava11-target",
+    "./mvnw clean package -DskipTests -Djdk17 -Pjava17-target",
+    "./mvnw clean package -DskipTests -Djdk21 -Pjava21-target",
+    "mvn -DskipTests clean package",
+    "mvn clean install -DskipTests",
+    "mvn compile -DskipTests=true",
+    "mvn clean package -Pgenerate-migration-test-data -Dgenerate.classes=class1,class2 -Dgenerate.version=1.17 -nsu -Dfast -DskipTests",
+    "mvn clean package -Pgenerate-migration-test-data -Dgenerate.prefixes=xx,yy,zz -Dgenerate.version=1.17 -nsu -Dfast -DskipTests",
+    "mvn clean package -Pgenerate-migration-test-data -Dgenerate.version=1.17 -nsu -Dfast -DskipTests",
+    "./mvnw package -Dgenerate-config-docs -pl flink-docs -am -nsu -DskipTests -Pskip-webui-build",
+    "./mvnw package -Dgenerate-rest-docs -pl flink-docs -am -nsu -DskipTests",
+    "npm install",
+    "npm run build",
+    "docker compose build",
+    "python pyflink/gen_protos.py",
+    "uv pip install --group dev",
+    "uv venv pyflink_39 --python=3.9",
+    "./setup_hugo.sh",
+    "./setup_docs.sh",
+    "./build_docs.sh",
+    "./build_docs.sh --skip-integrate-connector-docs",
+    "dev/generate_notice",
+    "./web-dashboard/dev/generate_notice.sh"
+  ],
+  "runnability": [
+    "npm run proxy",
+    "docker run -v $(pwd):/src -p 1313:1313 jakejarvis/hugo-extended:latest server --buildDrafts --buildFuture --bind 0.0.0.0",
+    "sh flink-end-to-end-tests/run-single-test.sh flink-end-to-end-tests/test-scripts/test_tpcds.sh",
+    "sh flink-end-to-end-tests/run-nightly-tests.sh"
+  ],
+  "testability": [
+    "npm run lint",
+    "npm run lint-staged",
+    "./dev/lint-python.sh",
+    "curl -f http://localhost:1313",
+    "mvn test -Dtest=\"*TestCodeArchitectureTest*\" -DfailIfNoTests=false -Darchunit.freeze.refreeze=true -Darchunit.freeze.store.default.allowStoreCreation=true -Dfast"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "pip install -e \".[dev]\"",
+    "pip install \"cut-cross-entropy[all] @ git+https://github.com/apple/ml-cross-entropy.git\""
+  ],
+  "runnability": [
+    "bash scripts/train.sh",
+    "python -m benchmark"
+  ],
+  "testability": [
+    "pytest -q"
+  ]
+}

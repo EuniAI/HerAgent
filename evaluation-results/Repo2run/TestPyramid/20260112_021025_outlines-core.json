@@ -1,0 +1,27 @@
+{
+  "installability": [
+    "python -m venv .venv",
+    "source .venv/bin/activate",
+    "python -m pip install --upgrade pip",
+    "pip install -e \".[test]\"",
+    "pip install --upgrade \"coverage[toml]>=5.1\" diff-cover",
+    "pip install pre-commit",
+    "sudo apt-get update && sudo apt-get install -yqq lcov",
+    "cargo install cargo-tarpaulin",
+    "cargo install cargo-audit",
+    "git fetch --no-tags --prune origin main",
+    "./.github/scripts/build_sdist_and_wheel.sh"
+  ],
+  "runnability": [],
+  "testability": [
+    "pre-commit run --all-files",
+    "cargo audit",
+    "python -m coverage combine",
+    "python -m coverage lcov",
+    "lcov -a coverage.lcov -a lcov.info -o combined_coverage",
+    "genhtml combined_coverage --output-directory htmlcov",
+    "diff-cover combined_coverage --markdown-report=coverage.md --fail-under=100 || (cat coverage.md >> $GITHUB_STEP_SUMMARY && exit 1)",
+    "pytest --cov=outlines_core -vv",
+    "cargo tarpaulin --out=Lcov --output-dir=rust-coverage --engine=llvm --exclude-files=src/python_bindings/* --no-dead-code --workspace --verbose"
+  ]
+}

@@ -1,0 +1,1953 @@
+====================================================================================================
+Installamatic Project Analysis Report
+====================================================================================================
+
+Total projects analyzed: 38
+
+Overall statistics:
+  - Fully successful: 24
+  - Partial success (total successes, including full success): 34 (at least one command succeeded in both build and test phases)
+  - Failed: 1
+  - Build only: 1
+  - No commands: 2
+  - Full success rate: 63.2%
+  - Overall success rate (partial success, including full success): 89.5%
+
+
+
+====================================================================================================
+Project: R2R
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ git clone https://github.com/SciPhi-AI/R2R-Templates
+        Status: execution failed
+     2. ✓ python3 -m venv venv
+        Status: switch level
+     3. ✗ git clone https://github.com/SciPhi-AI/R2R-Templates
+        Status: execution failed
+     4. ✓ pip install 'r2r[core]' pytest pre-commit
+        Status: switch level
+     5. ✗ git clone https://github.com/SciPhi-AI/R2R-Templates
+        Status: execution failed
+     6. ✓ pip install -e ./py
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python3 py/cli/cli.py --help
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python3 py/cli/cli.py --help
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: r2r --version
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: r2r --help
+        Status: execution failed
+     5. ✓ Level: Testability
+        Command: python3 py/cli/cli.py --help
+        Status: switch level
+     6. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py app_settings
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     17. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+     18. ✗ Level: Runnability
+        Command: npx next dev
+        Status: execution failed
+     19. ✗ Level: Runnability
+        Command: python3 py/cli/cli.py serve
+        Status: execution failed
+
+====================================================================================================
+Project: Torch-Pruning
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python -m pip install --upgrade pip
+        Status: switch level
+     2. ✓ pip install -r requirements.txt
+        Status: switch level
+     3. ✓ pip install -e .
+        Status: switch level
+     4. ✓ pip install flake8 pytest
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import torch, torchvision, numpy, torch_pruning as tp; print('torch', torch.__version__); print('torchvision', torchvision.__version__); print('numpy', numpy.__version__); print('torch_pruning', tp.__version__)"
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python -c "import torch, torchvision, numpy, torch_pruning as tp; print('torch', torch.__version__); print('torchvision', torchvision.__version__); print('numpy', numpy.__version__); print('torch_pruning', tp.__version__)"
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: python reproduce/main.py --help
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: pip show torch-pruning
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: python reproduce/main.py --help
+        Status: execution failed
+     6. ✗ Level: Testability
+        Command: flake8 .
+        Status: execution failed
+     7. ✗ Level: Testability
+        Command: python reproduce/main.py --help
+        Status: execution failed
+     8. ✗ Level: Testability
+        Command: python reproduce/main.py --help
+        Status: execution failed
+     9. ✗ Level: Testability
+        Command: python -c "import torch, torchvision, numpy, torch_pruning as tp; print('torch', torch.__version__); print('torchvision', torchvision.__version__); print('numpy', numpy.__version__); print('torch_pruning', tp.__version__)"
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: python -c "import torch_pruning as tp; import torch; import torchvision; from torchvision.models import resnet18; model=resnet18(pretrained=True).eval(); DG=tp.DependencyGraph().build_dependency(model, example_inputs=torch.randn(1,3,224,224)); print('DependencyGraph built')"
+        Status: execution failed
+     11. ✗ Level: Testability
+        Command: python reproduce/main.py --help
+        Status: execution failed
+     12. ✓ Level: Testability
+        Command: pip show torch-pruning
+        Status: switch level
+     13. ✗ Level: Runnability
+        Command: python -c "import torch_pruning as tp; import torch; import torchvision; from torchvision.models import resnet18; model=resnet18(pretrained=True).eval(); DG=tp.DependencyGraph().build_dependency(model, example_inputs=torch.randn(1,3,224,224)); print('DependencyGraph built')"
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: python -c "import torch_pruning as tp; import torch; import torchvision; from torchvision.models import resnet18; model=resnet18(pretrained=True).eval(); DG=tp.DependencyGraph().build_dependency(model, example_inputs=torch.randn(1,3,224,224)); print('DependencyGraph built')"
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: python -c "import torch_pruning as tp; import torch; import torchvision; from torchvision.models import resnet18; model=resnet18(pretrained=True).eval(); DG=tp.DependencyGraph().build_dependency(model, example_inputs=torch.randn(1,3,224,224)); print('DependencyGraph built')"
+        Status: execution failed
+     16. ✗ Level: Testability
+        Command: python reproduce/main.py --help
+        Status: execution failed
+     17. ✗ Level: Runnability
+        Command: python reproduce/main.py --mode test --model resnet18 --dataset cifar10
+        Status: execution failed
+     18. ✗ Level: Runnability
+        Command: python -c "import torch_pruning as tp; import torch; import torchvision; from torchvision.models import resnet18; model=resnet18(pretrained=True).eval(); DG=tp.DependencyGraph().build_dependency(model, example_inputs=torch.randn(1,3,224,224)); print('DependencyGraph built')"
+        Status: execution failed
+     19. ✗ Level: Runnability
+        Command: python reproduce/main.py --mode test --model resnet18 --dataset cifar10
+        Status: execution failed
+
+====================================================================================================
+Project: X-AnyLabeling
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ pip install -e .
+        Status: execution failed
+     2. ✗ pip install -e .
+        Status: execution failed
+     3. ✓ pip install -e .
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: anylabeling --help
+        Status: execution failed
+     2. ✓ Level: Testability
+        Command: anylabeling --help
+        Status: switch level
+     3. ✗ Level: Runnability
+        Command: anylabeling
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: python anylabeling/app.py
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: anylabeling
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: anylabeling
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: anylabeling
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: python anylabeling/app.py
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: python anylabeling/app.py --flags Apple,Meta,Google
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: python anylabeling/app.py
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: anylabeling
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: python anylabeling/app.py --labels person,helmet --labelflags "{'person': ['male', 'female'], 'helmet': ['white', 'red', 'blue', 'yellow', 'green']}" --validatelabel exact
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: anylabeling
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: python anylabeling/app.py --flags flags.txt
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: python anylabeling/app.py
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: python anylabeling/app.py --labels labels.txt --labelflags label_flags.yaml --validatelabel exact
+        Status: execution failed
+     17. ✗ Level: Runnability
+        Command: python anylabeling/app.py
+        Status: execution failed
+     18. ✗ Level: Runnability
+        Command: python anylabeling/app.py
+        Status: execution failed
+
+====================================================================================================
+Project: beets
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ git clone https://github.com/beetbox/beets.git
+        Status: execution failed
+     2. ✗ python3 -m pip install --user pipx
+        Status: execution failed
+     3. ✗ cd beets
+        Status: execution failed
+     4. ✗ sudo apt update
+        Status: execution failed
+     5. ✓ pipx install poetry poethepoet
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: beet --version
+        Status: switch level
+     2. ✓ Level: Runnability
+        Command: beet --help
+        Status: success and all finished
+
+====================================================================================================
+Project: black
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ pip install -r requirements.txt
+        Status: execution failed
+     2. ✓ pip install black
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: black --version
+        Status: switch level
+     2. ✓ Level: Runnability
+        Command: black .
+        Status: success and all finished
+
+====================================================================================================
+Project: boto3
+====================================================================================================
+
+1. Final status: BUILD_ONLY
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python -m venv .venv
+        Status: switch level
+     2. ✗ . .venv/bin/activate
+        Status: execution failed
+     3. ✓ python -m venv .venv
+        Status: switch level
+     4. ✗ . .venv/bin/activate
+        Status: execution failed
+     5. ✗ . .venv/bin/activate
+        Status: execution failed
+     6. ✗ . .venv/bin/activate
+        Status: execution failed
+     7. ✗ . .venv/bin/activate
+        Status: execution failed
+     8. ✗ . .venv/bin/activate
+        Status: execution failed
+     9. ✗ python -m pip install -r requirements.txt
+        Status: execution failed
+     10. ✗ python -m pip install -r requirements.txt
+        Status: execution failed
+     11. ✗ python -m pip install -r requirements.txt
+        Status: execution failed
+     12. ✗ python -m pip install -r requirements.txt
+        Status: execution failed
+     13. ✗ python -m pip install -r requirements.txt
+        Status: execution failed
+
+3. Test phase:
+   No test commands
+
+====================================================================================================
+Project: camel
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ pip install -e .[all]
+        Status: execution failed
+     2. ✗ pip install -e .[all]
+        Status: execution failed
+     3. ✗ pip install -e .[all]
+        Status: execution failed
+     4. ✗ pip install -e .[all]
+        Status: execution failed
+     5. ✗ pip install -e .[all]
+        Status: execution failed
+     6. ✓ pip install poetry
+        Status: switch level
+     7. ✓ poetry install
+        Status: switch level
+     8. ✗ pip install -e .[all]
+        Status: execution failed
+     9. ✗ pip install -e .[all]
+        Status: execution failed
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import camel; print('import_ok')"
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python -c "import camel; print('import_ok')"
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: python agents.py --help
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: python -c "import camel; print('import_ok')"
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: python -c "import camel; print('import_ok')"
+        Status: execution failed
+     6. ✗ Level: Testability
+        Command: python -c "import camel; print('import_ok')"
+        Status: execution failed
+     7. ✗ Level: Testability
+        Command: python -c "import camel; print('import_ok')"
+        Status: execution failed
+     8. ✓ Level: Testability
+        Command: python data_explorer.py --help
+        Status: switch level
+     9. ✓ Level: Runnability
+        Command: python data_explorer.py
+        Status: success and all finished
+
+====================================================================================================
+Project: cloud-custodian
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ make install
+        Status: execution failed
+     2. ✓ make install
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: make test
+        Status: execution failed
+     2. ✗ Level: Runnability
+        Command: custodian run --dryrun -s out policy.yml
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: make test
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: make lint
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: make test
+        Status: execution failed
+     6. ✓ Level: Testability
+        Command: make lint
+        Status: switch level
+     7. ✓ Level: Runnability
+        Command: custodian run --dryrun -s out policy.yml
+        Status: success and all finished
+
+====================================================================================================
+Project: core
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     2. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     3. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     4. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     5. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     6. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     7. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     8. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     9. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     10. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     11. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     12. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     13. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     14. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     15. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     16. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     17. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     18. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     19. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     20. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     21. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     22. ✗ bash -lc 'if [ -x ./mvnw ] || [ -f pom.xml ]; then (./mvnw -q -DskipTests -e -B package || mvn -q -DskipTests -e -B package); elif [ -x ./gradlew ] || ls build.gradle* >/dev/null 2>&1; then ./gradlew build -x test --stacktrace --no-daemon; elif [ -f package.json ]; then if command -v pnpm >/dev/null 2>&1 && [ -f pnpm-lock.yaml ]; then pnpm install --frozen-lockfile && pnpm -s build; elif command -v yarn >/dev/null 2>&1 && [ -f yarn.lock ]; then yarn install --frozen-lockfile && yarn -s build; else npm ci && npm run -s build; fi; elif [ -f pyproject.toml ] || [ -f requirements.txt ] || [ -f setup.py ]; then python -m pip install -U pip setuptools wheel && (pip install -r requirements.txt || true) && (pip install -e . || true); elif [ -f Cargo.toml ]; then cargo build --release; else echo "No recognized build system in repository"; exit 1; fi'
+        Status: execution failed
+     23. ✓ python3 -m pip install homeassistant
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: python3 -m homeassistant --version
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: hass -c .
+        Status: execution failed
+     3. ✓ Level: Runnability
+        Command: docker run -d --name homeassistant --restart unless-stopped -p 8123:8123 ghcr.io/home-assistant/home-assistant:stable
+        Status: success and all finished
+
+====================================================================================================
+Project: datasets
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install -e ".[docs]"
+        Status: switch level
+     2. ✓ python -m build
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import datasets; print(datasets.__version__)"
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: doc-builder --help
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: python -c "import datasets; print(datasets.__version__)"
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: python -c "import datasets; print(datasets.__version__)"
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: python -c "import datasets; print(datasets.__version__)"
+        Status: execution failed
+     6. ✗ Level: Testability
+        Command: python -c "import datasets; print(datasets.__version__)"
+        Status: execution failed
+     7. ✓ Level: Testability
+        Command: doc-builder --help
+        Status: switch level
+     8. ✗ Level: Runnability
+        Command: doc-builder preview datasets docs/source/
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: doc-builder preview datasets docs/source/
+        Status: execution failed
+     10. ✓ Level: Runnability
+        Command: twine check dist/*
+        Status: success and all finished
+
+====================================================================================================
+Project: django-stubs
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python3 -m venv .venv
+        Status: switch level
+     2. ✗ source .venv/bin/activate
+        Status: execution failed
+     3. ✓ source .venv/bin/activate
+        Status: switch level
+     4. ✓ pip install -r ./requirements.txt
+        Status: switch level
+     5. ✓ pip install django-stubs-ext
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: pip check
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: manage.py runserver
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: bash ./scripts/stubtest.sh
+        Status: execution failed
+
+====================================================================================================
+Project: dlt
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ npm install
+        Status: execution failed
+     2. ✓ nvm install --lts
+        Status: switch level
+     3. ✗ pip3 install -r requirements.txt
+        Status: execution failed
+     4. ✗ npm install
+        Status: execution failed
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python check_embedded_snippets.py lint
+        Status: execution failed
+     2. ✓ Level: Testability
+        Command: python check_embedded_snippets.py lint
+        Status: switch level
+     3. ✓ Level: Runnability
+        Command: python check_embedded_snippets.py full -v
+        Status: success and all finished
+
+====================================================================================================
+Project: fastapi
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python -m pip install -r requirements.txt
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Runnability
+        Command: uvicorn main:app
+        Status: execution failed
+     2. ✗ Level: Runnability
+        Command: uvicorn app.main:app --reload
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: curl -f http://127.0.0.1:8000/
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: uvicorn app.main:app --reload
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: pytest
+        Status: execution failed
+     6. ✓ Level: Testability
+        Command: curl -f http://127.0.0.1:8000/docs
+        Status: switch level
+     7. ✗ Level: Runnability
+        Command: pytest tests/integration
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: uvicorn app.main:app
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: uvicorn app.main:app
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: uvicorn app.main:app
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: uvicorn app.main:app
+        Status: execution failed
+     12. ✓ Level: Runnability
+        Command: python main.py
+        Status: success and all finished
+
+====================================================================================================
+Project: icloud-drive-docker
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ docker compose build
+        Status: execution failed
+     2. ✓ docker compose build
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     2. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     17. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     18. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     19. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     20. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     21. ✗ Level: Runnability
+        Command: docker run --name icloud -v ${PWD}/icloud:/icloud -v ${PWD}/config:/config -e ENV_CONFIG_FILE_PATH=/config/config.yaml mandarons/icloud-drive
+        Status: execution failed
+     22. ✓ Level: Runnability
+        Command: docker compose up -d
+        Status: success and all finished
+
+====================================================================================================
+Project: instructor
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install -r requirements.txt
+        Status: switch level
+     2. ✓ pip install -r requirements.txt
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: curl -sSf -o /dev/null http://localhost:8000/openapi.json
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     7. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     8. ✗ Level: Testability
+        Command: curl -sSf -o /dev/null http://localhost:8000/openapi.json
+        Status: execution failed
+     9. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     10. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     11. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     13. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     14. ✗ Level: Testability
+        Command: curl -sSf -o /dev/null http://localhost:8000/openapi.json
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     17. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     18. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     19. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     20. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     21. ✗ Level: Testability
+        Command: python -c "import instructor; print(instructor.__version__)"
+        Status: execution failed
+     22. ✗ Level: Testability
+        Command: pip show instructor
+        Status: execution failed
+     23. ✗ Level: Testability
+        Command: env | grep OPENROUTER
+        Status: execution failed
+     24. ✗ Level: Testability
+        Command: env | grep PERPLEXITY
+        Status: execution failed
+     25. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     26. ✓ Level: Testability
+        Command: env | grep RUNPOD
+        Status: switch level
+     27. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     28. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     29. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     30. ✓ Level: Testability
+        Command: curl -sI "$RUNPOD_BASE_URL"
+        Status: switch level
+     31. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     32. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     33. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     34. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     35. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     36. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     37. ✗ Level: Runnability
+        Command: uvicorn main:app --reload
+        Status: execution failed
+     38. ✓ Level: Runnability
+        Command: curl -s -X POST http://localhost:8000/extract -H "Content-Type: application/json" -d '{"context":"My name is Jason Liu, and I grew up in Toronto Canada but I was born in China.I went to an arts highschool but in university I studied Computational Mathematics and physics. As part of coop I worked at many companies including Stitchfix, Facebook. I also started the Data Science club at the University of Waterloo and I was the president of the club for 2 years.","query":"What did the author do in school?"}'
+        Status: success and all finished
+
+====================================================================================================
+Project: moto
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install 'moto[ec2,s3,all]'
+        Status: switch level
+     2. ✓ openssl genrsa -out ca.key 4096
+        Status: switch level
+     3. ✓ openssl req -x509 -new -nodes -key ca.key -sha512 -days 3650 -subj "/CN=Test CA" -out ca.pem
+        Status: switch level
+     4. ✓ openssl genrsa -out star_moto_com.key 2048
+        Status: switch level
+     5. ✓ openssl req -new -key star_moto_com.key -subj "/CN=star.moto.com" -out star_moto_com.csr
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Runnability
+        Command: moto_server -p 5000
+        Status: execution failed
+     2. ✗ Level: Runnability
+        Command: moto_server -p 5000
+        Status: execution failed
+     3. ✓ Level: Testability
+        Command: openssl rsa -in star_moto_com.key -check -noout
+        Status: switch level
+     4. ✓ Level: Runnability
+        Command: moto_server -p 5000
+        Status: success and all finished
+
+====================================================================================================
+Project: mypy
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python3 -m pip install -e .
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Runnability
+        Command: python3 -m mypy --version
+        Status: success and all finished
+
+====================================================================================================
+Project: nonebot2
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python -m pip install "nonebot2[fastapi]" nb-cli nonebot-plugin-docs
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -m nonebot --version
+        Status: execution failed
+     2. ✓ Level: Testability
+        Command: nb --version
+        Status: switch level
+     3. ✓ Level: Runnability
+        Command: nb run
+        Status: success and all finished
+
+====================================================================================================
+Project: numba
+====================================================================================================
+
+1. Final status: NO_COMMANDS
+
+2. Build phase:
+   No build commands
+
+3. Test phase:
+   No test commands
+
+====================================================================================================
+Project: open-interpreter
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install open-interpreter
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: interpreter --help
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: interpreter --local
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: interpreter --local
+        Status: execution failed
+     4. ✓ Level: Runnability
+        Command: interpreter --local
+        Status: success and all finished
+
+====================================================================================================
+Project: opencompass
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python -m pip install -r requirements.txt
+        Status: switch level
+     2. ✓ python -m pip install -e .
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python run.py --help
+        Status: execution failed
+     2. ✓ Level: Testability
+        Command: python --version
+        Status: switch level
+     3. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: python3 run.py
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: python run.py
+        Status: execution failed
+
+====================================================================================================
+Project: pennylane
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python -m pip install pennylane
+        Status: switch level
+     2. ✓ python -m pip install pytest
+        Status: switch level
+     3. ✓ python -m pip install .
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; qml.device('default.qubit', wires=1)"
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; qml.device('default.qubit', wires=1)"
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; qml.device('default.qubit', wires=1)"
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; qml.device('default.qubit', wires=1)"
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; qml.device('default.qubit', wires=1)"
+        Status: execution failed
+     6. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     7. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     8. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     9. ✗ Level: Testability
+        Command: pytest -q
+        Status: execution failed
+     10. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; qml.device('default.qubit', wires=1)"
+        Status: execution failed
+     11. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; qml.device('default.qubit', wires=1)"
+        Status: execution failed
+     12. ✗ Level: Testability
+        Command: python -c "import pennylane as qml; dev = qml.device('default.qubit', wires=1); @qml.qnode(dev) def circuit(): qml.Hadamard(wires=0); return qml.expval(qml.PauliZ(0)); print(circuit())"
+        Status: execution failed
+     13. ✗ Level: Testability
+        Command: python -c "import pennylane; print('PennyLane import OK')"
+        Status: execution failed
+     14. ✓ Level: Testability
+        Command: python -m pip show pennylane
+        Status: switch level
+     15. ✓ Level: Runnability
+        Command: pl-device-test --device default.qubit
+        Status: success and all finished
+
+====================================================================================================
+Project: pymc
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ conda create -n pymc_env -c conda-forge python=3.11 "pymc>=5"
+        Status: execution failed
+     2. ✓ pip install -r requirements-dev.txt
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import pymc as pm; print(pm.__version__)"
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python -c "import pymc as pm; print(pm.__version__)"
+        Status: execution failed
+     3. ✓ Level: Testability
+        Command: pytest -v tests/model/test_core.py -k coord
+        Status: switch level
+     4. ✗ Level: Testability
+        Command: PYTENSOR_FLAGS="floatX=${FLOATX:-float64},gcc__cxxflags='-march=core2'" pytest -v --cov=pymc --cov-report=xml --cov-report=term
+        Status: execution failed
+
+====================================================================================================
+Project: qlib
+====================================================================================================
+
+1. Final status: FAILED
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ pip install -r requirements.txt
+        Status: execution failed
+     2. ✓ pip install pytest coverage gdown
+        Status: switch level
+     3. ✗ pip install -e .
+        Status: execution failed
+     4. ✗ pip install -e .
+        Status: execution failed
+     5. ✗ pip install -e .
+        Status: execution failed
+     6. ✗ pip install -e .
+        Status: execution failed
+     7. ✗ pip install -e .
+        Status: execution failed
+     8. ✓ pip install --upgrade cython
+        Status: switch level
+     9. ✗ pip install -e .
+        Status: execution failed
+     10. ✗ pip install -e .
+        Status: execution failed
+     11. ✗ pip install -e .
+        Status: execution failed
+     12. ✗ pip install -e .
+        Status: execution failed
+     13. ✗ pip install -e .
+        Status: execution failed
+     14. ✗ pip install -e .
+        Status: execution failed
+     15. ✗ pip install -e .
+        Status: execution failed
+     16. ✗ pip install -e .
+        Status: execution failed
+     17. ✗ pip install -e .
+        Status: execution failed
+     18. ✗ pip install -e .
+        Status: execution failed
+     19. ✗ pip install -e .
+        Status: execution failed
+     20. ✗ pip install -e .
+        Status: execution failed
+     21. ✗ pip install -e .
+        Status: None
+     22. ✗ python -m pip install -e .
+        Status: execution failed
+
+3. Test phase:
+   Test succeeded: False
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python scripts/get_data.py qlib_data --help
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python scripts/get_data.py qlib_data --help
+        Status: execution failed
+
+====================================================================================================
+Project: rich
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python -m pip install rich
+        Status: switch level
+     2. ✗ cp -r ../rich/benchmarks/html/* .
+        Status: execution failed
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: python -m rich
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: asv preview
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: asv run
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: asv preview
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: asv run
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: asv run
+        Status: execution failed
+     7. ✓ Level: Runnability
+        Command: asv run
+        Status: success and all finished
+
+====================================================================================================
+Project: sabnzbd
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ python3 -m pip install -r requirements.txt
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Runnability
+        Command: python3 -OO SABnzbd.py -d
+        Status: success and all finished
+
+====================================================================================================
+Project: scapy
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ pip install -e .
+        Status: execution failed
+     2. ✓ pip install -e .
+        Status: switch level
+     3. ✓ python -m pip install -e .
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: scapy -h
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: scapy.py -H
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: scapy
+        Status: execution failed
+     4. ✓ Level: Runnability
+        Command: scapy
+        Status: success and all finished
+     5. ✗ Level: Testability
+        Command: python -c "import scapy; print(scapy.__version__)"
+        Status: execution failed
+     6. ✓ Level: Testability
+        Command: python -m scapy -h
+        Status: switch level
+     7. ✓ Level: Runnability
+        Command: python -m scapy
+        Status: success and all finished
+
+====================================================================================================
+Project: scvi-tools
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install -e ".[dev]"
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import scvi; print(scvi.__version__)"
+        Status: execution failed
+     2. ✓ Level: Testability
+        Command: pip show scvi-tools
+        Status: switch level
+     3. ✗ Level: Testability
+        Command: python -c "import scvi; print(scvi.__version__)"
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: python -c "import scvi; print(scvi.__version__)"
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: python -c "import scvi; print(scvi.__version__)"
+        Status: execution failed
+     6. ✗ Level: Testability
+        Command: python -c "import scvi; print(scvi.__version__)"
+        Status: execution failed
+     7. ✗ Level: Testability
+        Command: python -c "import scvi; print(scvi.__version__)"
+        Status: execution failed
+     8. ✗ Level: Testability
+        Command: pytest
+        Status: execution failed
+     9. ✗ Level: Testability
+        Command: python -c "import scvi; print(scvi.__version__)"
+        Status: execution failed
+
+====================================================================================================
+Project: sherlock
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✗ pip install --user sherlock-project
+        Status: execution failed
+     2. ✗ pipx install sherlock-project
+        Status: execution failed
+     3. ✓ docker pull sherlock/sherlock
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: sherlock --help
+        Status: execution failed
+     2. ✓ Level: Runnability
+        Command: docker run --rm sherlock/sherlock user123
+        Status: success and all finished
+
+====================================================================================================
+Project: spaCy
+====================================================================================================
+
+1. Final status: NO_COMMANDS
+
+2. Build phase:
+   No build commands
+
+3. Test phase:
+   No test commands
+
+====================================================================================================
+Project: spotify-downloader
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ poetry install
+        Status: switch level
+     2. ✓ docker build -t spotdl .
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: spotdl --version
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: spotdl url https://open.spotify.com/track/0rKtyWc8bvkriBthvHKY8d
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: docker run --rm -v $(pwd):/music spotdl download https://open.spotify.com/track/0rKtyWc8bvkriBthvHKY8d
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: docker run --rm -v $(pwd):/music spotdl download https://open.spotify.com/track/0rKtyWc8bvkriBthvHKY8d
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: spotdl save https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M --save-file playlist.spotdl
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: spotdl web
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: spotdl save https://open.spotify.com/playlist/37i9dQZF1DXcBWIGoYBM5M --save-file playlist.spotdl
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: spotdl --download-ffmpeg
+        Status: execution failed
+
+====================================================================================================
+Project: starlette
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ scripts/install
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: scripts/check
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: uvicorn example:app
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: pytest -q -m integration
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: uvicorn example:app --host 0.0.0.0 --port 8000
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: uvicorn example:app --host 0.0.0.0 --port 8000
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: uvicorn example:app
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: pytest -q -m integration
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: pytest -q -m integration
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: uvicorn example:app
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: uvicorn example:app --host 0.0.0.0 --port 8000
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: uvicorn example:app
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: uvicorn example:app --host 0.0.0.0 --port 8000
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: uvicorn example:app --host 0.0.0.0 --port 8000
+        Status: execution failed
+     14. ✓ Level: Runnability
+        Command: pytest -q -m integration
+        Status: success and all finished
+
+====================================================================================================
+Project: sympy
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install .
+        Status: switch level
+     2. ✓ pip install -e .
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import sympy as sp; x=sp.symbols('x'); assert sp.expand((x+1)**2)==x**2+2*x+1"
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python -c "import sympy; assert hasattr(sympy, '__version__)"
+        Status: None
+     3. ✗ Level: Testability
+        Command: python -c "import sympy; print(sympy.__version__)"
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: python -c "import sympy; print(sympy.__version__)"
+        Status: execution failed
+     5. ✓ Level: Testability
+        Command: isympy --help
+        Status: switch level
+     6. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: pytest -m slow
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: pytest -m slow
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: pytest -m slow
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: pytest -m slow
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: pytest -m slow
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     17. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     18. ✗ Level: Runnability
+        Command: pytest -m slow
+        Status: execution failed
+     19. ✗ Level: Runnability
+        Command: isympy
+        Status: execution failed
+     20. ✓ Level: Runnability
+        Command: isympy
+        Status: success and all finished
+
+====================================================================================================
+Project: textual
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install textual
+        Status: switch level
+     2. ✓ pip install textual-dev
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -m textual --version
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python -m textual --version
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: python -m textual --version
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: python -m textual --version
+        Status: execution failed
+     5. ✓ Level: Testability
+        Command: python -m textual --version
+        Status: switch level
+     6. ✗ Level: Runnability
+        Command: python -m textual
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: python -m textual
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: textual run text_style.py
+        Status: execution failed
+     9. ✓ Level: Runnability
+        Command: python pride.py
+        Status: success and all finished
+
+====================================================================================================
+Project: tqdm
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install -r .meta/requirements-build.txt
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: tqdm --version
+        Status: switch level
+     2. ✓ Level: Runnability
+        Command: python -m tqdm
+        Status: success and all finished
+
+====================================================================================================
+Project: ydata-profiling
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install ydata-profiling
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: ydata_profiling --version
+        Status: switch level
+     2. ✗ Level: Runnability
+        Command: ydata_profiling
+        Status: execution failed
+     3. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     4. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     5. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     6. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     7. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     8. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     9. ✗ Level: Runnability
+        Command: mkdocs serve
+        Status: execution failed
+     10. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     11. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     12. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     13. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     14. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     15. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     16. ✗ Level: Runnability
+        Command: pandas_profiling
+        Status: execution failed
+     17. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     18. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     19. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     20. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     21. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: execution failed
+     22. ✗ Level: Runnability
+        Command: ydata_profiling --title "Example Profiling Report" --config_file default.yaml data.csv report.html
+        Status: None
+
+====================================================================================================
+Project: yfinance
+====================================================================================================
+
+1. Final status: PARTIAL_SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install .
+        Status: switch level
+     2. ✓ pip install yfinance
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     2. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     3. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     4. ✗ Level: Testability
+        Command: pytest --cov=yfinance
+        Status: execution failed
+     5. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     6. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     7. ✗ Level: Testability
+        Command: python -m unittest discover -s tests
+        Status: execution failed
+     8. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     9. ✗ Level: Testability
+        Command: pytest --cov=yfinance
+        Status: execution failed
+     10. ✗ Level: Testability
+        Command: pytest --cov=yfinance
+        Status: execution failed
+     11. ✗ Level: Testability
+        Command: pytest --cov=yfinance
+        Status: execution failed
+     12. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     13. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     14. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     15. ✗ Level: Testability
+        Command: python -m unittest discover -s tests
+        Status: execution failed
+     16. ✗ Level: Testability
+        Command: python -m unittest discover -s tests
+        Status: execution failed
+     17. ✗ Level: Testability
+        Command: python -c "import yfinance as yf"
+        Status: execution failed
+     18. ✗ Level: Testability
+        Command: pytest --cov=yfinance
+        Status: execution failed
+     19. ✗ Level: Testability
+        Command: python -m unittest discover -s tests
+        Status: execution failed
+     20. ✓ Level: Testability
+        Command: python -c 'import yfinance; print(yfinance.__version__)'
+        Status: switch level
+     21. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+     22. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+     23. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+     24. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.download("SPY AAPL", period="1mo").tail())'
+        Status: execution failed
+     25. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.download("SPY AAPL", period="1mo").tail())'
+        Status: execution failed
+     26. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.download("SPY AAPL", period="1mo").tail())'
+        Status: execution failed
+     27. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+     28. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.download("SPY AAPL", period="1mo").tail())'
+        Status: execution failed
+     29. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+     30. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.download("SPY AAPL", period="1mo").tail())'
+        Status: execution failed
+     31. ✗ Level: Runnability
+        Command: mkdocs serve
+        Status: execution failed
+     32. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+     33. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.download("SPY AAPL", period="1mo").tail())'
+        Status: execution failed
+     34. ✗ Level: Runnability
+        Command: mkdocs serve
+        Status: execution failed
+     35. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+     36. ✗ Level: Runnability
+        Command: mkdocs serve
+        Status: execution failed
+     37. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.download("SPY AAPL", period="1mo").tail())'
+        Status: execution failed
+     38. ✗ Level: Runnability
+        Command: mkdocs serve
+        Status: execution failed
+     39. ✗ Level: Runnability
+        Command: python -c 'import yfinance as yf; print(yf.Ticker("MSFT").history(period="1mo").head())'
+        Status: execution failed
+
+====================================================================================================
+Project: you-get
+====================================================================================================
+
+1. Final status: SUCCESS
+
+2. Build phase:
+   Build succeeded: True
+   Build commands:
+     1. ✓ pip install you-get
+        Status: switch level
+
+3. Test phase:
+   Test succeeded: True
+   Test commands:
+     1. ✓ Level: Testability
+        Command: you-get --version
+        Status: switch level
+     2. ✓ Level: Runnability
+        Command: you-get https://stallman.org/rms.jpg
+        Status: success and all finished
+

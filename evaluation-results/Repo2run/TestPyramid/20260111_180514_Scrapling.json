@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "python3 -m pip install --upgrade pip",
+    "python3 -m pip install -U tox",
+    "python3 -m pip install playwright camoufox",
+    "python3 -m playwright install-deps chromium firefox",
+    "python3 -m playwright install chromium"
+  ],
+  "runnability": [
+    "python3 -m camoufox fetch --browserforge"
+  ],
+  "testability": [
+    "python3 -m camoufox --help",
+    "python3 -m playwright --version",
+    "tox"
+  ]
+}

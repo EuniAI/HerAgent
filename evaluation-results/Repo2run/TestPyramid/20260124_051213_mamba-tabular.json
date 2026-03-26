@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "python -m venv .venv",
+    "source .venv/bin/activate",
+    "pip install -r requirements.txt",
+    "pip install -r docs/requirements_docs.txt",
+    "pip install torch==2.0.0+cu118 torchvision==0.15.0+cu118 torchaudio==2.0.0+cu118 -f https://download.pytorch.org/whl/cu118/torch_stable.html",
+    "pip install .",
+    "pip install mamba-ssm",
+    "cd docs",
+    "make clean",
+    "make html"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -c \"import mambular; print(mambular.__version__)\"",
+    "python -c \"from mambular.models import MambularClassifier; print('MambularClassifier imported')\"",
+    "python -c \"import torch; print(torch.__version__)\"",
+    "python -c \"import mamba_ssm; print('mamba-ssm OK')\"",
+    "pip show mambular",
+    "test -f docs/_build/html/index.html",
+    "make test",
+    "pytest -q"
+  ]
+}

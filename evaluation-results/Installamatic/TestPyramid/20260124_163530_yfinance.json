@@ -1,0 +1,27 @@
+{
+  "installability": [
+    "pip install -e .",
+    "pip install .",
+    "python -m build",
+    "python setup.py sdist bdist_wheel",
+    "python setup.py install",
+    "pip install yfinance",
+    "pip install \"yfinance[repair]\"",
+    "conda install -c ranaroussi yfinance",
+    "pip install mkdocs mkdocs-material mkdocstrings",
+    "mkdocs build"
+  ],
+  "runnability": [
+    "mkdocs serve",
+    "python -c 'import yfinance as yf; print(yf.download(\"SPY AAPL\", period=\"1mo\").tail())'",
+    "python -c 'import yfinance as yf; print(yf.Ticker(\"MSFT\").history(period=\"1mo\").head())'"
+  ],
+  "testability": [
+    "python -c \"import importlib.metadata as m; print(m.version('yfinance'))\"",
+    "python -c 'import yfinance; print(yfinance.__version__)'",
+    "pip show yfinance",
+    "mkdocs --version",
+    "python setup.py --version",
+    "pytest -q"
+  ]
+}

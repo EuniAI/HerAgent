@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "python -m pip install rich",
+    "cp -r ../rich/benchmarks/html/* ."
+  ],
+  "runnability": [
+    "asv preview",
+    "asv run",
+    "asv run HEAD^!",
+    "asv run HASHFILE:asvhashfile"
+  ],
+  "testability": [
+    "python example.py",
+    "python justify.py",
+    "python -m rich"
+  ]
+}

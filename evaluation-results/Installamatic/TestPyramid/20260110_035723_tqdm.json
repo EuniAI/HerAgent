@@ -1,0 +1,28 @@
+{
+  "installability": [
+    "pip install -r .meta/requirements-build.txt",
+    "make build",
+    "python -m build"
+  ],
+  "runnability": [
+    "python -m tqdm",
+    "7z a -bd -r backup.7z docs/ | grep Compressing | tqdm --total $(find docs/ -type f | wc -l) --unit files | grep -v Compressing",
+    "tar -zcf - docs/ | tqdm --bytes --total \"$(du -sb docs/ | cut -f1)\" > backup.tgz",
+    "BYTES=$(du -sb docs/ | cut -f1); tar -cf - docs/ | tqdm --bytes --total \"$BYTES\" --desc Processing | gzip | tqdm --bytes --total \"$BYTES\" --desc Compressed --position 1 > ~/backup.tgz",
+    "find . -name '*.py' -type f -exec cat {} \\; | tqdm --unit loc --unit_scale --total 857366 >> /dev/null",
+    "seq 3 0.1 5 | tqdm --total 5 --update_to --null",
+    "seq 10 | tqdm --update --null",
+    "seq 9999999 | tqdm --bytes | wc -l",
+    "time find . -name '*.py' -type f -exec cat {} \\; | tqdm | wc -l"
+  ],
+  "testability": [
+    "tqdm -h",
+    "tqdm --help",
+    "tqdm --version",
+    "tqdm -v",
+    "docker run -i --rm tqdm/tqdm --help",
+    "tox -e py${PYVER/./}",
+    "timeout 5m tox || timeout 5m tox || timeout 5m tox",
+    "pytest -q"
+  ]
+}

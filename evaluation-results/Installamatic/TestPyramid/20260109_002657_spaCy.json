@@ -1,0 +1,32 @@
+{
+  "installability": [
+    "python -m pip install -U pip setuptools wheel",
+    "python -m pip install -r requirements.txt",
+    "npm install",
+    "docker build -t spacy-io ."
+  ],
+  "runnability": [
+    "npm run dev",
+    "docker run -it --rm -v $(pwd):/home/node/website -p 3000:3000 spacy-io npm run dev -- -H 0.0.0.0",
+    "python -m spacy project run all",
+    "python -m spacy project run package",
+    "python -m spacy project run visualize-model",
+    "python -m spacy train config.cfg --paths.train ./train.spacy --paths.dev ./dev.spacy",
+    "python -m spacy train configs/config.cfg --output training/ --paths.train corpus/train.spacy --paths.dev corpus/dev.spacy --training.eval_frequency 10 --training.max_steps 100 --gpu-id -1",
+    "python -m spacy convert file.json .",
+    "python -m spacy convert -c iob -s -n 10 -b en_core_web_sm file.iob .",
+    "python -m spacy convert -c iob -s -n 10 -b en file.iob",
+    "python textcatjsonl_to_trainjson.py -m en file.jsonl .",
+    "python -m spacy evaluate ./training/model-best ./dev.spacy"
+  ],
+  "testability": [
+    "python -m spacy validate",
+    "python -m spacy info",
+    "curl -fsS http://localhost:3000/",
+    "pytest spacy",
+    "pytest spacy --slow",
+    "pytest spacy/tests/tokenizer/test_exceptions.py",
+    "pytest spacy/tests/tokenizer/test_exceptions.py::test_tokenizer_handles_emoji",
+    "pytest -x spacy"
+  ]
+}

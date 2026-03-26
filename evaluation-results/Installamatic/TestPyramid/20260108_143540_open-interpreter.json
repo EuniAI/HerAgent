@@ -1,0 +1,19 @@
+{
+  "installability": [
+    "pip install open-interpreter"
+  ],
+  "runnability": [
+    "interpreter",
+    "interpreter --local",
+    "interpreter --model gpt-3.5-turbo",
+    "interpreter --model claude-2",
+    "interpreter --model command-nightly",
+    "interpreter --verbose",
+    "interpreter --local --max_tokens 1000 --context_window 3000",
+    "interpreter --api_base http://localhost:1234/v1 --api_key fake_key"
+  ],
+  "testability": [
+    "interpreter --help",
+    "interpreter --version"
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "installability": [
+    "pip install -e .[all]",
+    "pip install poetry",
+    "poetry env use python3.10",
+    "poetry install",
+    "pip install sphinx sphinx-autobuild sphinx_book_theme myst_parser nbsphinx",
+    "sphinx-apidoc -o docs camel/",
+    "make -C docs clean",
+    "make -C docs html",
+    "pip install gradio"
+  ],
+  "runnability": [
+    "docker compose up -d",
+    "docker run -d --name camel ghcr.io/camel-ai/camel:latest",
+    "sphinx-autobuild docs docs/_build/html --port 8000",
+    "python agents.py",
+    "python data_explorer.py",
+    "python examples/ai_society/role_playing.py"
+  ],
+  "testability": [
+    "python data_explorer.py --help",
+    "python agents.py --help",
+    "python -c \"import camel; print('import_ok')\"",
+    "pytest -q"
+  ]
+}

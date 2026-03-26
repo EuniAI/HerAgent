@@ -1,0 +1,19 @@
+{
+  "installability": [
+    "pip install -e .",
+    "pip install -r requirements.txt",
+    "pyrcc5 -o anylabeling/resources/resources.py anylabeling/resources/resources.qrc"
+  ],
+  "runnability": [
+    "anylabeling",
+    "python anylabeling/app.py",
+    "python anylabeling/app.py --flags Apple,Meta,Google",
+    "python anylabeling/app.py --flags flags.txt",
+    "python anylabeling/app.py --labels labels.txt --labelflags label_flags.yaml --validatelabel exact",
+    "python anylabeling/app.py --labels person,helmet --labelflags \"{'person': ['male', 'female'], 'helmet': ['white', 'red', 'blue', 'yellow', 'green']}\" --validatelabel exact"
+  ],
+  "testability": [
+    "anylabeling --help",
+    "python anylabeling/app.py --help"
+  ]
+}

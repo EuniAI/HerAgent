@@ -1,0 +1,35 @@
+{
+  "installability": [
+    "python3 -m pip install homeassistant",
+    "pipx install homeassistant",
+    "docker pull ghcr.io/home-assistant/home-assistant:stable"
+  ],
+  "runnability": [
+    "hass",
+    "hass -c /config",
+    "hass -c .",
+    "hass --open-ui",
+    "hass --debug",
+    "python -m homeassistant",
+    "python3 -m homeassistant -c /config",
+    "python -m homeassistant -v",
+    "docker run -d --name homeassistant --restart unless-stopped -p 8123:8123 ghcr.io/home-assistant/home-assistant:stable",
+    "docker run -d --name homeassistant --restart unless-stopped --network host ghcr.io/home-assistant/home-assistant:stable"
+  ],
+  "testability": [
+    "hass --script check_config -c /config",
+    "hass --script check_config",
+    "hass --version",
+    "python3 -m homeassistant --version",
+    "docker run --rm ghcr.io/home-assistant/home-assistant:stable --version",
+    "hass --help",
+    "python3 -m homeassistant --help",
+    "docker run --rm ghcr.io/home-assistant/home-assistant:stable --help",
+    "pip show homeassistant",
+    "curl -I http://localhost:8123",
+    "curl -f http://localhost:8123",
+    "pytest",
+    "python3 -m pytest",
+    "tox"
+  ]
+}

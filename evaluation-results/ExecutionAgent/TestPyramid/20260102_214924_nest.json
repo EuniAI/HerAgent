@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "npm install",
+    "npm run build"
+  ],
+  "runnability": [
+    "npm start",
+    "npm run test:integration"
+  ],
+  "testability": [
+    "npm run test"
+  ]
+}

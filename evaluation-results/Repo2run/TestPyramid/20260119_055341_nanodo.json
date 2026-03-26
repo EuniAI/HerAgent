@@ -1,0 +1,21 @@
+{
+  "installability": [
+    "python3.11 -m venv /tmp/nanodo_test_env",
+    "source /tmp/nanodo_test_env/bin/activate",
+    "python -m pip install -U pip setuptools wheel",
+    "pip install -e .",
+    "if [ -f requirements.txt ]; then pip install -r requirements.txt; fi",
+    "pip install pytest pytest-xdist",
+    "pip install tensorboard"
+  ],
+  "runnability": [
+    "python nanodo/main.py --config=nanodo/configs/default.py --config.workdir=/tmp/nanodo_workdir --config.vocab_path=tests/testdata/sentencepiece_cc_all.32000.100extra-sentencepiece.model --config.model.L=128 --config.batch_size=2 --config.pygrain_worker_count=0 2> stderr.log",
+    "tensorboard --logdir /tmp/nanodo_workdir",
+    "if [ -d tests/integration ]; then PYTHONHASHSEED=0 pytest -n auto -rA tests/integration; fi"
+  ],
+  "testability": [
+    "python -c 'import nanodo, sys; sys.exit(0 if hasattr(nanodo, \"__version__\") else 1)'",
+    "test -d /tmp/nanodo_workdir",
+    "PYTHONHASHSEED=0 pytest -n auto -rA"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "installability": [
+    "pipx install sherlock-project",
+    "pip install --user sherlock-project",
+    "brew install sherlock",
+    "apt install sherlock",
+    "pacman -S sherlock",
+    "docker pull sherlock/sherlock"
+  ],
+  "runnability": [
+    "sherlock user123",
+    "sherlock user1 user2 user3",
+    "docker run --rm sherlock/sherlock user123",
+    "sherlock --json results.json user123"
+  ],
+  "testability": [
+    "sherlock --help"
+  ]
+}

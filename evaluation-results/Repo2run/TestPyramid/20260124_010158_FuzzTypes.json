@@ -1,0 +1,11 @@
+{
+  "installability": [
+    "python -m pip install fuzztypes",
+    "python -m pip install anyascii dateparser emoji lancedb nameparser number-parser rapidfuzz sentence-transformers tantivy"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -c \"import fuzztypes; print(getattr(fuzztypes, '__version__', 'imported'))\"",
+    "pip show fuzztypes"
+  ]
+}

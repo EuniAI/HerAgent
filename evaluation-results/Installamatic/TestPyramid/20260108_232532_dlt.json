@@ -1,0 +1,22 @@
+{
+  "installability": [
+    "nvm install --lts",
+    "npm install",
+    "npm run build",
+    "npm run build:netlify",
+    "pip3 install -r requirements.txt"
+  ],
+  "runnability": [
+    "docker-compose -f .github/weaviate-compose.yml up -d",
+    "npm run start",
+    "npm run serve",
+    "python check_embedded_snippets.py parse -s 49,345,789",
+    "python check_embedded_snippets.py full -f walkthrough",
+    "python check_embedded_snippets.py full -v"
+  ],
+  "testability": [
+    "python check_embedded_snippets.py lint",
+    "pytest",
+    "npm test"
+  ]
+}

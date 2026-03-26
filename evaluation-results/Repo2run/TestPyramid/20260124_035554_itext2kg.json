@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "python -m pip install -r requirements.txt",
+    "python -m pip install -e .",
+    "uv pip install --system -r requirements.txt",
+    "curl -LsSf https://astral.sh/uv/install.sh | sh"
+  ],
+  "runnability": [
+    "jupyter lab examples/different_llm_models.ipynb",
+    "jupyter notebook examples/different_llm_models.ipynb"
+  ],
+  "testability": [
+    "python -m py_compile itext2kg/itext2kg.py",
+    "python -c \"import itext2kg; print('import OK')\"",
+    "python -c \"from itext2kg.itext2kg import iText2KG; print('OK')\"",
+    "python -c \"from itext2kg.utils.matcher import Matcher; print('OK')\"",
+    "python -c \"import importlib.metadata as md; print(md.version('itext2kg'))\"",
+    "python -m pip show itext2kg",
+    "python -m pytest -q",
+    "python -m pytest -q tests/test_itext2kg.py",
+    "python -m pytest -q tests/test_matcher.py",
+    "python -m pytest -k build_graph_multiple_sections_merge",
+    "python -m unittest discover"
+  ]
+}

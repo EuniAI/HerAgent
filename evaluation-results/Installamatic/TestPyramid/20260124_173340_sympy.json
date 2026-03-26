@@ -1,0 +1,27 @@
+{
+  "installability": [
+    "python setup.py antlr",
+    "python setup.py sdist",
+    "python setup.py bdist_wheel",
+    "pip install .",
+    "pip install -e .",
+    "python -m build",
+    "make html",
+    "docker build -f Dockerfile . -t sympy/sympy-release",
+    "conda install -c conda-forge antlr=4.11.1"
+  ],
+  "runnability": [
+    "isympy",
+    "pytest -m slow"
+  ],
+  "testability": [
+    "isympy --help",
+    "python -c \"import sympy; print(sympy.__version__)\"",
+    "python -c \"from sympy import Symbol, cos; x = Symbol('x'); e = 1/cos(x); print(e.series(x, 0, 10))\"",
+    "pytest",
+    "python setup.py test",
+    "bin/test",
+    "bin/doctest",
+    "python -c \"import sympy; sympy.test()\""
+  ]
+}

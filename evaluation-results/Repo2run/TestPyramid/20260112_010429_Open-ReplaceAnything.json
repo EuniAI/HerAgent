@@ -1,0 +1,21 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip",
+    "pip install -r requirements.txt",
+    "pip install -e .",
+    "python setup.py bdist_wheel && python setup.py sdist"
+  ],
+  "runnability": [
+    "bash train_stage_1.sh",
+    "bash train_stage_2.sh",
+    "python -c \"from diffusers import DiffusionPipeline; pipe = DiffusionPipeline.from_pretrained('hf-internal-testing/tiny-stable-diffusion-pipe', safety_checker=None); pipe('ah suh du')\"",
+    "python -c \"from diffusers import DiffusionPipeline; pipe = DiffusionPipeline.from_pretrained('fusing/unet-ldm-dummy-update'); pipe()\""
+  ],
+  "testability": [
+    "python -c \"from diffusers import __version__; print(__version__)\"",
+    "python -c \"from diffusers import *\"",
+    "python -c \"import sys; from diffusers.dependency_versions_table import deps; print(' '.join([deps[x] for x in sys.argv[1:]]))\" tokenizers datasets",
+    "diffusers-cli --help",
+    "pytest -q"
+  ]
+}

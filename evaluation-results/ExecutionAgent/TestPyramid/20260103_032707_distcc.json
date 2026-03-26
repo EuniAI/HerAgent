@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "./autogen.sh",
+    "if [[ \"$TRAVIS_OS_NAME\" == \"linux\" ]]; then ./configure; fi",
+    "if [[ \"$TRAVIS_OS_NAME\" == \"osx\" ]]; then ./configure --without-libiberty; fi",
+    "./build.sh",
+    "make",
+    "distcc gcc -DHAVE_CONFIG_H -D_GNU_SOURCE -I./src \"-DSYSCONFDIR=\\\"/etc/\\\"\" -I./lzo -g -O2 -W -Wall -W -Wimplicit -Wshadow -Wpointer-arith -Wcast-align -Wwrite-strings -Waggregate-return -Wstrict-prototypes -Wmissing-prototypes -Wnested-externs -o src/clirpc.o -c src/clirpc.c"
+  ],
+  "runnability": [
+    "./run.py include_server.py",
+    "$include_server_location/run.py --run_in_install include_server.py ..",
+    "make distcheck"
+  ],
+  "testability": [
+    "make check",
+    "./run.py `which pychecker` include_server.py",
+    "./run.py include_server_test.py"
+  ]
+}

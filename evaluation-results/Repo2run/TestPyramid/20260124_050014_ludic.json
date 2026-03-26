@@ -1,0 +1,15 @@
+{
+  "installability": [
+    "python -m venv .venv",
+    "source .venv/bin/activate",
+    "pip install -e .[dev]",
+    "pip install uvicorn"
+  ],
+  "runnability": [
+    "uvicorn web:app"
+  ],
+  "testability": [
+    "python -c \"import ludic; print(ludic.__version__)\"",
+    "pytest"
+  ]
+}

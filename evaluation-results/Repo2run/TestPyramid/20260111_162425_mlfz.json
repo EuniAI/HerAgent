@@ -1,0 +1,14 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip",
+    "pip install setuptools wheel",
+    "pip install mlfz",
+    "python setup.py sdist bdist_wheel",
+    "pip install -e ."
+  ],
+  "runnability": [],
+  "testability": [
+    "python -m pip install --upgrade twine",
+    "twine check dist/*"
+  ]
+}

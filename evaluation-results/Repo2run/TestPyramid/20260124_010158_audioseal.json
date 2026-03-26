@@ -1,0 +1,33 @@
+{
+  "installability": [
+    "pip install -e .",
+    "pip install torchaudio==2.1.0",
+    "pip install torch==2.1.0",
+    "pip install soundfile",
+    "pip install dora-search",
+    "pip install audiocraft",
+    "sudo apt-get install ffmpeg",
+    "conda install \"ffmpeg<5\" -c conda-forge"
+  ],
+  "runnability": [
+    "dora run solver=watermark/robustness dset=audio/voxpopuli",
+    "dora run solver=watermark/robustness dset=audio/example",
+    "AUDIOCRAFT_CONFIG=my_config.yaml dora run solver=watermark/robustness dset=audio/voxpopuli",
+    "AUDIOCRAFT_CONFIG=my_config.yaml AUDIOCRAFT_DSET=audio/voxpopuli dora grid watermarking.1315_kbits_seeds",
+    "AUDIOCRAFT_CONFIG=my_config.yaml dora run solver=watermark/robustness execute_only=evaluate dset=audio/voxpopuli continue_from=[PATH_TO_THE_CHECKPOINT_FILE] +dummy_watermarker.nbits=16 seanet.detector.output_dim=32",
+    "LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH AUDIOCRAFT_CONFIG=my_config.yaml dora run solver=watermark/robustness dset=audio/voxpopuli",
+    "python -m audiocraft.data.audio_dataset [ROOT] egs/voxpopuli/data.jsonl.gz",
+    "python [AudioSeal path]/src/scripts/checkpoints.py --checkpoint=[PATH TO CHECKPOINT] --outdir=[OUTPUT_DIR] --suffix=[name of the new model]"
+  ],
+  "testability": [
+    "python -c \"from audioseal import AudioSeal; AudioSeal.load_detector('audioseal_detector_16bits'); print('Detector loaded')\"",
+    "python -c \"from audioseal import AudioSeal; AudioSeal.load_generator('audioseal_wm_16bits'); print('Generator loaded')\"",
+    "python -c \"import audioseal; print(getattr(audioseal, '__version__', 'unknown'))\"",
+    "pip show audioseal",
+    "python -c \"import audiocraft; print(audiocraft.__version__)\"",
+    "python -c \"import torch, torchaudio; print(torch.__version__); print(torchaudio.__version__)\"",
+    "dora --version",
+    "ffmpeg -version",
+    "pytest -q"
+  ]
+}

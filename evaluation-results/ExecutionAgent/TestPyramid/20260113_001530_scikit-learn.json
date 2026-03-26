@@ -1,0 +1,9 @@
+{
+  "installability": [
+    "python -m pip install -U scikit-learn"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -m unittest discover -v"
+  ]
+}

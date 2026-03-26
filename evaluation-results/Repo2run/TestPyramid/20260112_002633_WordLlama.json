@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip",
+    "python -m pip install setuptools wheel setuptools_scm cython numpy",
+    "python -m pip install .[train]",
+    "python setup.py build_ext --inplace"
+  ],
+  "runnability": [
+    "python train.py train --config \"$CONFIG\"",
+    "python train.py save --config \"$CONFIG\" --checkpoint \"$CHECKPOINT\" --outdir \"$OUTDIR\"",
+    "python -m unittest discover -s tests/integration"
+  ],
+  "testability": [
+    "python -c \"import wordllama; assert hasattr(wordllama, '__version__')\"",
+    "python -m unittest discover -s tests"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "installability": [
+    "pip install databonsai"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -c 'import importlib.metadata as m; print(m.version(\"databonsai\"))'",
+    "python -c \"import databonsai; print(databonsai.__version__)\"",
+    "python -c \"from databonsai.utils import apply_to_column, apply_to_column_batch, apply_to_column_autobatch; print('OK')\""
+  ]
+}

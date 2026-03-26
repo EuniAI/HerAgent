@@ -1,0 +1,34 @@
+{
+  "installability": [
+    "apt install ninja-build pkg-config",
+    "dnf install ninja-build pkgconf-pkg-config",
+    "pkg install ninja pkgconf",
+    "apt install libgtk-4-1 libwebkitgtk-6.0-4",
+    "apt install libgtk-4-dev libwebkitgtk-6.0-dev",
+    "apt install libgtk-3-0 libwebkit2gtk-4.0-37",
+    "apt install libgtk-3-0 libwebkit2gtk-4.1-0",
+    "apt install libgtk-3-dev libwebkit2gtk-4.0-dev",
+    "apt install libgtk-3-dev libwebkit2gtk-4.1-dev",
+    "dnf install gtk4 webkitgtk6.0",
+    "dnf install gtk4-devel webkitgtk6.0-devel",
+    "dnf install gtk3 webkit2gtk4.0",
+    "dnf install gtk3-devel webkit2gtk4.0-devel",
+    "dnf install gtk3 webkit2gtk4.1",
+    "dnf install gtk3-devel webkit2gtk4.1-devel",
+    "pkg install webkit2-gtk3",
+    "pkg install webkit2-gtk4",
+    "python3 scripts/amalgamate/amalgamate.py --base core --search include --output webview_amalgamation.h src",
+    "cmake -G Ninja -B build -S . -D CMAKE_BUILD_TYPE=Release",
+    "cmake --build build",
+    "c++ main.cc -O2 --std=c++11 -Ilibs $(pkg-config --cflags --libs gtk+-3.0 webkit2gtk-4.1) -ldl -o example",
+    "c++ main.cc -O2 --std=c++11 -Ilibs -framework WebKit -o example",
+    "c++ main.cc -O2 --std=c++14 -static -mwindows -Ilibs -ladvapi32 -lole32 -lshell32 -lshlwapi -luser32 -lversion -o example"
+  ],
+  "runnability": [
+    "./example"
+  ],
+  "testability": [
+    "python3 scripts/amalgamate/amalgamate.py --help",
+    "ctest -C Release --output-on-failure"
+  ]
+}

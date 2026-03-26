@@ -1,0 +1,13 @@
+{
+  "installability": [
+    "python -m pip install --upgrade build twine",
+    "rm -rf dist build *.egg-info",
+    "python -m build",
+    "twine check dist/*"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -m pip install prompt-poet",
+    "bash -c 'git diff --name-only $COMMIT | grep \"\\.py$\" | gxargs --delimiter=\"\\n\" --no-run-if-empty flake8 --ignore=E203,W503,W504,E741,E501 --max-complexity=30 --max-line-length=88 --show-source --statistics'"
+  ]
+}

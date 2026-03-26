@@ -1,0 +1,32 @@
+{
+  "installability": [
+    "brew install pipx",
+    "pipx ensurepath",
+    "pipx install tidevice3",
+    "sudo apt install python3-dev gcc pipx"
+  ],
+  "runnability": [
+    "t3 relay 8100 8100 --source 0.0.0.0 --daemonize",
+    "sudo t3 tunneld",
+    "t3 install ./app.ipa",
+    "t3 install https://example.com/app.ipa",
+    "t3 uninstall com.example.app",
+    "t3 app list",
+    "t3 app ps",
+    "t3 app launch com.example.app",
+    "t3 app kill com.example.app",
+    "t3 app foreground com.example.app",
+    "t3 screenrecord out.mp4",
+    "t3 screenshot out.png",
+    "t3 relay 8100 8100",
+    "t3 developer",
+    "t3 reboot",
+    "t3 fsync ls /",
+    "t3 fsync pull /path/on/device ./local_dir"
+  ],
+  "testability": [
+    "t3 --help",
+    "t3 --version",
+    "t3 list"
+  ]
+}

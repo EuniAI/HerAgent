@@ -1,0 +1,29 @@
+{
+  "installability": [
+    "cmake -S . -B build",
+    "cmake --build build --parallel",
+    "cmake --build build --config Release",
+    "cmake --build build --config Debug",
+    "cov-build --dir cov-int -- cmake --build build",
+    "cov-build --dir cov-int make",
+    "mkdir build && cd build && cmake .. && make"
+  ],
+  "runnability": [],
+  "testability": [
+    "which aarch64-none-elf-gcc",
+    "which arm-none-eabi-gcc",
+    "which aarch64-linux-gnu-gcc",
+    "test -d portable/ThirdParty/Partner-Supported-Ports/GCC/AVR_AVRDx && echo \"Exists\" || echo \"Missing\"",
+    "test -d portable/ThirdParty/Partner-Supported-Ports/GCC/AVR_Mega0 && echo \"AVR_Mega0 port directory exists\" || echo \"AVR_Mega0 port directory missing\"",
+    "test -d portable/GCC/ARM_CA53_64_BIT && echo \"ARM_CA53_64_BIT port exists\"",
+    "grep -R \"ARM_AARCH64\" -n portable/GCC",
+    "grep -R \"ARM_CA53_64_BIT\" -n portable/GCC",
+    "grep -R \"TFM_NS_MANAGE_NSID\" build/CMakeCache.txt",
+    "readelf -h build/*.elf",
+    "file build/*.elf",
+    "aarch64-none-elf-gcc -dumpmachine",
+    "aarch64-linux-gnu-gcc -dumpmachine",
+    "test -f portable/GCC/AVR_AVRDx/README.md && echo \"README exists\"",
+    "ctest --test-dir build --output-on-failure"
+  ]
+}

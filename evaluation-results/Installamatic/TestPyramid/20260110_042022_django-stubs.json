@@ -1,0 +1,33 @@
+{
+  "installability": [
+    "python3 -m venv .venv",
+    "source .venv/bin/activate",
+    "pip install -U pip setuptools wheel",
+    "python3 -m pip install --upgrade build twine",
+    "pip install -r ./requirements.txt",
+    "pip install \"Django==${{ matrix.django-version }}\"",
+    "pip install 'django-stubs[compatible-mypy]'",
+    "pip install django-stubs-ext",
+    "sudo apt-get update",
+    "sudo apt-get install binutils libproj-dev gdal-bin",
+    "python3 -m build --sdist --wheel .",
+    "python3 -m build --sdist --wheel ext/"
+  ],
+  "runnability": [
+    "manage.py runserver",
+    "bash ./scripts/stubtest.sh"
+  ],
+  "testability": [
+    "mypy --strict ext",
+    "mypy --strict mypy_django_plugin",
+    "mypy --strict scripts",
+    "mypy --strict tests/assert_type",
+    "mypy --cache-dir=/dev/null --no-incremental django-stubs",
+    "twine check --strict dist/*",
+    "twine check --strict ext/dist/*",
+    "pre-commit run --all-files",
+    "pip check",
+    "PYTHONPATH='.' pytest --num-shards=4 --shard-id=${{ matrix.shard }} tests",
+    "PYTHONPATH='.' pytest ext"
+  ]
+}

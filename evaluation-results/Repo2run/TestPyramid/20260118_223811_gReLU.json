@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "pip install -r requirements.txt",
+    "conda install -c conda-forge cudatoolkit-dev -y",
+    "pip install torch ninja",
+    "pip install flash-attn --no-build-isolation",
+    "pip install myst-parser sphinx",
+    "pip install -e .",
+    "conda install -y bioconda::ucsc-bedgraphtobigwig bioconda::ucsc-genepredtobed bioconda::ucsc-genepredtogtf bioconda::ucsc-bedtogenepred bioconda::ucsc-gtftogenepred bioconda::ucsc-gff3togenepred",
+    "sphinx-build -b html docs _build/html"
+  ],
+  "runnability": [],
+  "testability": [
+    "python -c \"import grelu; print(grelu.__version__)\"",
+    "sphinx-build --version",
+    "pytest"
+  ]
+}

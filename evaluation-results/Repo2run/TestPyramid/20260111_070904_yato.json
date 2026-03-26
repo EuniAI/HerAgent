@@ -1,0 +1,15 @@
+{
+  "installability": [
+    "poetry install",
+    "poetry build",
+    "pip install yato-lib"
+  ],
+  "runnability": [
+    "yato run --db tmp.duckdb sql/"
+  ],
+  "testability": [
+    "isort . -c -v",
+    "black . --check",
+    "pytest"
+  ]
+}

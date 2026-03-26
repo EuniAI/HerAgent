@@ -1,0 +1,51 @@
+{
+  "installability": [
+    "yarn install",
+    "bundle install && bundle exec pod install",
+    "arch -x86_64 pod install",
+    "node scripts/ios-prebuild",
+    "node scripts/releases/prepare-ios-prebuilds.js",
+    "node scripts/debugger-frontend/sync-and-build",
+    "npx @react-native-community/cli bundle --entry-file <path> [options]",
+    "yarn build",
+    "yarn cxx-api-build",
+    "yarn build dev-middleware",
+    "yarn build-types --validate",
+    "yarn build-types --skip-snapshot",
+    "yarn prepare-ios",
+    "yarn clean-ios",
+    "yarn clean",
+    "yarn featureflags --update",
+    "prepare-package-for-release"
+  ],
+  "runnability": [
+    "npx @react-native-community/cli start [options]",
+    "yarn android",
+    "yarn ios",
+    "test-release-local",
+    "test-release-local-clean"
+  ],
+  "testability": [
+    "./scripts/cxx-api/check-api.sh",
+    "yarn js-api-diff <before.d.ts> <after.d.ts>",
+    "yarn lint-ci",
+    "yarn jest",
+    "yarn test",
+    "yarn jest packages/react-native-codegen",
+    "yarn jest packages/eslint-plugin-react-native",
+    "yarn jest packages/assets",
+    "yarn jest packages/polyfills",
+    "yarn jest packages/babel-plugin-codegen",
+    "yarn jest packages/virtualized-lists",
+    "yarn jest packages/eslint-plugin-specs",
+    "yarn jest packages/metro-config",
+    "yarn jest packages/normalize-color",
+    "./gradlew -p packages/gradle-plugin test",
+    "yarn fantom <regexForTestFiles>",
+    "FANTOM_DEBUG_JS=1 yarn fantom <regexForTestFiles>",
+    "FANTOM_PROFILE_JS=1 yarn fantom <regexForTestFiles>",
+    "FANTOM_ENABLE_TSAN=1 yarn fantom <regexForTestFiles>",
+    "FANTOM_ENABLE_ASAN=1 yarn fantom <regexForTestFiles>",
+    "FANTOM_DEBUG_CPP=1 yarn fantom <regexForTestFiles>"
+  ]
+}

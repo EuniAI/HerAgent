@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "pip install 'moto[ec2,s3,all]'",
+    "openssl genrsa -out ca.key 4096",
+    "openssl req -x509 -new -nodes -key ca.key -sha512 -days 3650 -subj \"/CN=Test CA\" -out ca.pem",
+    "openssl genrsa -out star_moto_com.key 2048",
+    "openssl req -new -key star_moto_com.key -subj \"/CN=star.moto.com\" -out star_moto_com.csr",
+    "openssl x509 -req -in star_moto_com.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out star_moto_com.pem -days 3650 -sha512"
+  ],
+  "runnability": [
+    "moto_server -p 5000"
+  ],
+  "testability": [
+    "openssl verify -CAfile ca.pem star_moto_com.pem",
+    "openssl rsa -in star_moto_com.key -check -noout"
+  ]
+}

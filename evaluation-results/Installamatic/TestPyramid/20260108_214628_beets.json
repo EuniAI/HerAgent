@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "python3 -m pip install --user pipx",
+    "pipx install poetry poethepoet",
+    "sudo apt update",
+    "sudo apt install ffmpeg gobject-introspection libgirepository1.0-dev",
+    "git clone https://github.com/beetbox/beets.git",
+    "cd beets",
+    "poetry install -E replaygain -E reflink",
+    "poetry build"
+  ],
+  "runnability": [
+    "python -m beets",
+    "beet --help"
+  ],
+  "testability": [
+    "poe lint",
+    "poe check-types --pretty",
+    "beet --version",
+    "pytest",
+    "poe test",
+    "poe test --lf",
+    "poe test-with-coverage"
+  ]
+}

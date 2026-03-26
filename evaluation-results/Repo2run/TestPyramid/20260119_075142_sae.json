@@ -1,0 +1,17 @@
+{
+  "installability": [
+    "pip install -e ."
+  ],
+  "runnability": [
+    "python -m sae EleutherAI/pythia-160m togethercomputer/RedPajama-Data-1T-Sample",
+    "python -m sae EleutherAI/pythia-160m togethercomputer/RedPajama-Data-1T-Sample --finetune EleutherAI/sae-pythia-160m-32x",
+    "python -m sae gpt2 togethercomputer/RedPajama-Data-1T-Sample --hookpoints \"h.[012].attn\" \"h.[012].mlp.act\"",
+    "python -m sae gpt2 togethercomputer/RedPajama-Data-1T-Sample --hookpoints \"h.*.attn\" \"h.*.mlp.act\"",
+    "torchrun --nproc_per_node 1 -m sae meta-llama/Meta-Llama-3-8B --batch_size 1 --layers 16 24 --k 192 --grad_acc_steps 8 --ctx_len 2048",
+    "torchrun --nproc_per_node 1 -m sae meta-llama/Meta-Llama-3-8B --distribute_modules --batch_size 1 --layer_stride 2 --grad_acc_steps 8 --ctx_len 2048 --k 192 --load_in_8bit --micro_acc_steps 2"
+  ],
+  "testability": [
+    "python -m sae --help",
+    "pytest -q"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "installability": [
+    "python3 -m venv venv",
+    ". venv/bin/activate",
+    "pip install -r requirements.txt",
+    "pip install -r ./notifications_slack/requirements.txt && pip install ./notifications_slack",
+    "pip install ./health_check_plugin",
+    "npm install",
+    "npm install @openapi-codegen/typescript",
+    "npm install @openapi-codegen/cli",
+    "npx openapi-codegen gen api",
+    "docker build -t access ."
+  ],
+  "runnability": [
+    "docker compose up --build",
+    "gunicorn -w 4 -t 600 -b :3000 --access-logfile - api.wsgi:app",
+    "npm start",
+    "flask run"
+  ],
+  "testability": [
+    "flask health",
+    "tox -e test",
+    "tox -e mypy",
+    "tox -e ruff"
+  ]
+}

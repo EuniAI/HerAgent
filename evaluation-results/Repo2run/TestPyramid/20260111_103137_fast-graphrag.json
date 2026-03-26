@@ -1,0 +1,26 @@
+{
+  "installability": [
+    "pipx install poetry",
+    "poetry install",
+    "poetry build",
+    "python -m pip install ruff",
+    "pip install fast-graphrag",
+    "curl https://raw.githubusercontent.com/circlemind-ai/fast-graphrag/refs/heads/main/mock_data.txt > ./book.txt"
+  ],
+  "runnability": [
+    "python benchmarks/nano_benchmark.py -n 51 -b --mode=local",
+    "python benchmarks/nano_benchmark.py -n 51 -c",
+    "python benchmarks/graph_benchmark.py -n 51 -b",
+    "python benchmarks/graph_benchmark.py -n 51 -c",
+    "python benchmarks/vdb_benchmark.py -n 51 -b",
+    "python benchmarks/vdb_benchmark.py -n 51 -c",
+    "python benchmarks/lightrag_benchmark.py -n 51 -b --mode=local",
+    "python benchmarks/lightrag_benchmark.py -n 51 -c"
+  ],
+  "testability": [
+    "ruff check . --select E9,F63,F7,F82 --show-files",
+    "ruff check . --select E,W,F,I,B,C4,N,D --ignore C901,W191,D401 --show-files",
+    "python -c \"import fast_graphrag\"",
+    "poetry run python -m unittest discover -s tests/ -p \"*_test.py\""
+  ]
+}

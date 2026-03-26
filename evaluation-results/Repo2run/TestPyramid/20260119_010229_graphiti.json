@@ -1,0 +1,27 @@
+{
+  "installability": [
+    "make install",
+    "poetry install",
+    "pip install .",
+    "pip install graphiti-core"
+  ],
+  "runnability": [
+    "docker compose up -d",
+    "docker volume create neo4j_data",
+    "docker network create graphiti_net",
+    "docker run -d --name neo4j --network graphiti_net -p 7474:7474 -p ${NEO4J_PORT}:${NEO4J_PORT} -e NEO4J_AUTH=${NEO4J_USER}/${NEO4J_PASSWORD} -v neo4j_data:/data neo4j:5.22.0",
+    "docker run -d --name graph --network graphiti_net -p 8000:8000 -e OPENAI_API_KEY=${OPENAI_API_KEY} -e NEO4J_URI=bolt://neo4j:${NEO4J_PORT} -e NEO4J_USER=${NEO4J_USER} -e NEO4J_PASSWORD=${NEO4J_PASSWORD} zepai/graphiti:latest",
+    "poetry run pytest -m integration",
+    "pytest -m integration"
+  ],
+  "testability": [
+    "curl -fsS http://localhost:8000",
+    "curl -fsS http://localhost:8000/docs",
+    "curl -fsS http://localhost:8000/redoc",
+    "curl -fsS http://localhost:7474",
+    "python -c \"import graphiti_core; print(graphiti_core.__version__)\"",
+    "pip show graphiti-core",
+    "poetry run pytest",
+    "pytest"
+  ]
+}

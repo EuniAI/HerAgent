@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "pip install .",
+    "pip install -r requirements.txt"
+  ],
+  "runnability": [
+    "uvicorn app.app:app --host 127.0.0.1 --port 8000",
+    "uvicorn app.app:app --reload",
+    "python -m uvicorn app.app:app --host 127.0.0.1 --port 8000",
+    "python -m app.app --data-path output.parquet",
+    "curl -f http://127.0.0.1:8000/about",
+    "curl -f http://127.0.0.1:8000/results/test"
+  ],
+  "testability": [
+    "curl -f http://127.0.0.1:8000/",
+    "pytest"
+  ]
+}

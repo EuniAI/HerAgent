@@ -1,0 +1,26 @@
+{
+  "installability": [
+    "pip install .",
+    "pip install -e .",
+    "cd webui && npm install",
+    "cd webui && npm run build",
+    "docker build -t absolut_image resources/docker/absolut_image"
+  ],
+  "runnability": [
+    "transopt-server",
+    "gunicorn -b 0.0.0.0:5001 'transopt.agent.app:create_app'",
+    "FLASK_APP=transopt.agent.app:create_app flask run --port 5001",
+    "python -m transopt.agent.app",
+    "cd webui && npm start",
+    "python transopt/agent/run_cli.py",
+    "curl -sf -X POST http://127.0.0.1:5001/api/generate-yaml -H \"Content-Type: application/json\" -d '{\"content\":{\"text\":\"test\"}}'",
+    "curl -sf -X POST http://127.0.0.1:5001/api/Dashboard/tasks -H \"Content-Type: application/json\" -d '{}'",
+    "curl -sf -X POST http://127.0.0.1:5001/api/RunPage/get_info -H \"Content-Type: application/json\" -d '{\"action\": \"\"}'"
+  ],
+  "testability": [
+    "pip show transopt",
+    "python transopt/agent/run_cli.py --help",
+    "transopt-server --help",
+    "cd webui && npm test"
+  ]
+}

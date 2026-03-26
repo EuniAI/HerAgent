@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "python -Im ensurepip",
+    "pip install -r requirements.txt",
+    "source hacking/env-setup",
+    "ansible-container init"
+  ],
+  "runnability": [
+    "ansible-test integration",
+    "find lib/ansible/plugins/filter -name '*.py' -not -name __init__.py -exec hacking/azp/incidental.py 14075/ --plugin-path '{}' ';'"
+  ],
+  "testability": [
+    "ansible --version",
+    "ansible-test sanity --test validate-modules",
+    "ansible-test units",
+    "./hacking/test-module.py -m lib/ansible/modules/command.py -a \"echo hi\""
+  ]
+}

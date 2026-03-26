@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "conda create -n travel python=3.8 -y",
+    "conda activate travel",
+    "pip3 install -r requirements.txt"
+  ],
+  "runnability": [
+    "export BASE_URL=http://localhost:8000",
+    "python app.py",
+    "curl -sS -f -X POST \"$BASE_URL/api/v1/user/_login\" -H \"Content-Type: application/json\" -d '{\"username\":\"admin\",\"passwd\":\"admin\"}'",
+    "curl -sS -f -X POST \"$BASE_URL/api/v1/address/address_list\" -H \"Content-Type: application/json\" -d '{\"messages\":[\"杭州\",\"杭州西湖\"]}'",
+    "curl -sS -f -X POST \"$BASE_URL/api/v1/address/circum_address_list\" -H \"Content-Type: application/json\" -d '{\"address_name\":\"杭州西湖\"}'",
+    "curl -sS -f -X POST \"$BASE_URL/api/v1/user/_register\" -H \"Content-Type: application/json\" -d '{\"username\":\"5555\",\"passwd\":\"2\",\"phone\":\"1111\",\"nickname\":\"2\",\"email\":\"2222\"}'"
+  ],
+  "testability": [
+    "curl -sS -f -I \"$BASE_URL\"",
+    "python test.py",
+    "python -m unittest discover -s tests -p \"test_*.py\""
+  ]
+}

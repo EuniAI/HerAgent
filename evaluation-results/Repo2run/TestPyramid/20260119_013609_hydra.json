@@ -1,0 +1,25 @@
+{
+  "installability": [
+    "pip install -r requirements.txt",
+    "pip install -r requirements-cpu.txt",
+    "pip install mamba-ssm",
+    "docker pull mosaicml/pytorch:1.13.1_cu117-python3.10-ubuntu20.04"
+  ],
+  "runnability": [
+    "python main.py yamls/pretrain/hydra.yaml",
+    "composer main.py yamls/pretrain/hydra.yaml",
+    "python glue.py yamls/finetune/hydra.yaml",
+    "composer -n 8 main.py yamls/pretrain/hydra.yaml",
+    "python src/text_data.py --local_path /tmp/cache-c4 --remote_path s3://my-bucket/my-copy-c4 --tokenizer bert-base-uncased",
+    "python src/convert_dataset.py --dataset c4 --data_subset en --out_root ./my-copy-c4 --splits train --compression zstd",
+    "python glue.py yamls/test/glue.yaml model.name=mosaic_bert"
+  ],
+  "testability": [
+    "composer main.py yamls/test/main.yaml",
+    "composer sequence_classification.py yamls/test/sequence_classification.yaml",
+    "python glue.py yamls/test/glue.yaml",
+    "python src/convert_dataset.py --dataset c4 --data_subset en --out_root ./my-copy-c4 --splits train_small val --compression zstd",
+    "python src/text_data.py --local_path /tmp/cache-c4 --remote_path ./my-copy-c4 --tokenizer bert-base-uncased",
+    "pytest -q"
+  ]
+}

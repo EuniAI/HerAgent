@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "./mvnw -B -V --no-transfer-progress clean install -DskipTests -Dlicense.skip=true",
+    "./mvnw verify jacoco:report sonar:sonar -B -V -Dsonar.projectKey=mybatis_mybatis-3 -Dsonar.organization=mybatis -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONAR_TOKEN -Dlicense.skip=true --no-transfer-progress",
+    "./mvnw site site:stage -DskipTests -Dlicense.skip=true -B -V --no-transfer-progress --settings ./.mvn/settings.xml"
+  ],
+  "runnability": [
+    "[no applicable commands for this library project]",
+    "./mvnw test -B -V --no-transfer-progress -D\"license.skip=true\" $TEST_CONTAINERS_PROFILE",
+    "./mvnw verify -B -V --no-transfer-progress -Dlicense.skip=true $TEST_CONTAINERS_PROFILE"
+  ],
+  "testability": [
+    "./mvnw -B -V --no-transfer-progress -Dlicense.skip=true -DskipITs test",
+    "./mvnw -B -V --no-transfer-progress test -Dlicense.skip=true",
+    "./mvnw -B -V test jacoco:report coveralls:report -q -Dlicense.skip=true -DrepoToken=$GITHUB_TOKEN -DserviceName=github --no-transfer-progress",
+    "./mvnw -B -V test jacoco:report coveralls:report -q -Dlicense.skip=true -DrepoToken=$GITHUB_TOKEN -DserviceName=github -DpullRequest=$PR_NUMBER --no-transfer-progress"
+  ]
+}

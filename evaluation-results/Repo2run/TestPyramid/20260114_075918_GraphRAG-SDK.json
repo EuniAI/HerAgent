@@ -1,0 +1,10 @@
+{
+  "installability": [
+    "python -m pip install -e ."
+  ],
+  "runnability": [],
+  "testability": [
+    "python -c \"import graphrag_sdk; print('graphrag_sdk imported successfully')\"",
+    "python -m unittest discover -v"
+  ]
+}

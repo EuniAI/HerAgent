@@ -1,0 +1,20 @@
+{
+  "installability": [
+    "python -m venv .venv",
+    ". .venv/bin/activate",
+    "python -m pip install -r requirements.txt",
+    "python -m pip install -r requirements-docs.txt",
+    "python -m pip install -e .",
+    "cd docs && make html"
+  ],
+  "runnability": [
+    "tox -e py26,py33 -- integration/",
+    "pytest tests/integration"
+  ],
+  "testability": [
+    "python -c 'import boto3'",
+    "tox",
+    "pytest tests/unit",
+    "tox -- unit/test_session.py"
+  ]
+}

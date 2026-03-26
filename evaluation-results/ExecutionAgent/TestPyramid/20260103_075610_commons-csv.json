@@ -1,0 +1,18 @@
+{
+  "installability": [
+    "./benchmark-prereq.sh",
+    "mvn -V install:install-file -Dfile=/tmp/csv-1.0.jar -DgroupId=org.skife.kasparov -DartifactId=csv -Dversion=1.0 -Dpackaging=jar",
+    "mvn clean site -Dcommons.jacoco.haltOnFailure=false -Pjacoco",
+    "mvn clean install",
+    "mvn verify"
+  ],
+  "runnability": [
+    "mvn test -Pbenchmark",
+    "mvn test -Pbenchmark -Dbenchmark=read"
+  ],
+  "testability": [
+    "mvn -DskipITs=true verify",
+    "mvn test",
+    "mvn test -Dtest=PerformanceTest"
+  ]
+}

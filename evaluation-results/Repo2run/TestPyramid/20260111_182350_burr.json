@@ -1,0 +1,30 @@
+{
+  "installability": [
+    "pip install -r requirements.txt",
+    "pip install \"burr[start]\"",
+    "pip install \"burr[tracking-server-s3, cli]\"",
+    "npm run build",
+    "docker build --platform linux/amd64 -t aws-lambda-burr ."
+  ],
+  "runnability": [
+    "docker compose up --build",
+    "docker run -p 9000:8080 aws-lambda-burr",
+    "burr --no-open",
+    "npm start",
+    "streamlit run streamlit_app.py",
+    "streamlit run simple_streamlit_app.py & burr",
+    "python application.py",
+    "python lcel/application.py",
+    "python hamilton/application.py",
+    "python hamilton_ingest.py",
+    "aws lambda invoke --function-name aws-lambda-burr --cli-binary-format raw-in-base64-out --payload '{\"body\":{\"number\":5}}' response.json",
+    "curl -X POST \"http://localhost:9000/2015-03-31/functions/function/invocations\" -d '{\"body\":{\"number\":3}}'"
+  ],
+  "testability": [
+    "aerich init -t burr.tracking.server.s3.settings.TORTOISE_ORM --location ./burr/tracking/server/s3/migrations",
+    "aerich init-db",
+    "burr-test-case create --project-name \"SOME_NAME\" --partition-key \"SOME_KEY\" --app-id \"SOME_ID\" --sequence-id 0 --target-file-name /tmp/test-case.json",
+    "npm test",
+    "pytest -q"
+  ]
+}

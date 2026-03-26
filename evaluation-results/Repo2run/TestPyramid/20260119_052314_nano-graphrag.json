@@ -1,0 +1,41 @@
+{
+  "installability": [
+    "python -m pip install --upgrade pip",
+    "python -m pip install -r requirements.txt",
+    "python -m pip install -r requirements-dev.txt",
+    "python -m pip install -U setuptools wheel",
+    "python -m pip install build",
+    "python -m build",
+    "python -m pip install -e .",
+    "ollama create -f Modelfile qwen2:ctx32k"
+  ],
+  "runnability": [
+    "systemctl start neo4j",
+    "neo4j start",
+    "docker run --rm -p 7474:7474 -p 7687:7687 -e NEO4J_AUTH=neo4j/neo4j neo4j:latest",
+    "python examples/no_openai_key_at_all.py",
+    "python examples/using_amazon_bedrock.py",
+    "python examples/using_custom_chunking_method.py",
+    "ollama run qwen2:ctx32k",
+    "NEO4J_URL=bolt://localhost:7687 NEO4J_USER=neo4j NEO4J_PASSWORD=neo4j pytest tests/test_neo4j_storage.py",
+    "pytest tests/test_neo4j_storage.py -q",
+    "pytest tests/test_neo4j_storage.py::test_upsert_and_get_node -q",
+    "pytest tests/test_neo4j_storage.py::test_leiden_clustering -q",
+    "python -c \"import os; from nano_graphrag import GraphRAG; from nano_graphrag._storage import Neo4jStorage; GraphRAG(graph_storage_cls=Neo4jStorage, addon_params={'neo4j_url': os.environ.get('NEO4J_URL','neo4j://localhost:7687'), 'neo4j_auth': (os.environ.get('NEO4J_USER','neo4j'), os.environ.get('NEO4J_PASSWORD','neo4j'))}); print('OK')\""
+  ],
+  "testability": [
+    "neo4j status",
+    "neo4j --version",
+    "python -c \"import nano_graphrag\"",
+    "python -c \"import nano_graphrag; print(nano_graphrag.__version__)\"",
+    "pip show nano-graphrag",
+    "cypher-shell -a \"$NEO4J_URL\" -u \"$NEO4J_USER\" -p \"$NEO4J_PASSWORD\" \"RETURN 1;\"",
+    "cypher-shell -a \"$NEO4J_URL\" -u \"$NEO4J_USER\" -p \"$NEO4J_PASSWORD\" \"CALL gds.version();\"",
+    "ollama show qwen2:ctx32k",
+    "ollama list",
+    "python -m pytest -q",
+    "python -m pytest",
+    "python -m pytest -o log_cli=true -o log_cli_level=\"INFO\" --cov=nano_graphrag --cov-report=xml -v ./",
+    "NANO_GRAPHRAG_TEST_IGNORE_NEO4J=true python -m pytest -o log_cli=true -o log_cli_level=\"INFO\" --cov=nano_graphrag --cov-report=xml -v ./"
+  ]
+}
